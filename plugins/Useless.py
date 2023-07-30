@@ -27,7 +27,7 @@ def get_readable_time(seconds: int) -> str:
     return up_time
 
 @Bot.on_message(filters.command(['uptime', 'ping']))
-async def stats(bot: Bot, message: Message):
+async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
     P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/3932401941f0bda36dd64.jpg")
     end_time = time.time()
