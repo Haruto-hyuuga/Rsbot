@@ -5,17 +5,6 @@ from pyrogram.types import Message
 from pyrogram import filters
 from datetime import datetime
 
-def generate_primes(limit):
-    primes = []
-    for num in range(2, limit):
-        is_prime = True
-        for i in range(2, int(math.sqrt(num)) + 1):
-            if num % i == 0:
-                is_prime = False
-                break
-        if is_prime:
-            primes.append(num)
-    return primes
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -49,17 +38,10 @@ async def stats(bot: Bot, message: Message):
     delta = now - bot.uptime
     uptime = get_readable_time(delta.seconds)
     
-    start_processing = time.time()
-    primes = generate_primes(100000)
-    end_processing = time.time()
-    process_time = round(end_processing - start_processing, 3)
-    
     await P_MSG.edit(f"""
 __⚡ PING:__    **{ping_time} milliseconds**
 
 __🌍 UPTIME:__    **{uptime}**
-
-__⏱️ PROCESSING SPEED:__    **{process_time} seconds**
 
 __📡 HOSTED BY:__ @ANIMEROBOTS 
 """
