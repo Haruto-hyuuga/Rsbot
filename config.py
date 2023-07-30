@@ -1,9 +1,3 @@
-import os
-
-API_ID = 
-API_HASH = ""
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-
 
 
 SUB_MAIN_BOT = "https://t.me/AnimeDL_Robot"
