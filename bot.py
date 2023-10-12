@@ -27,12 +27,13 @@ class Bot(Client):
 
     async def start(self):
         await super().start()
-        usr_bot_me = await self.get_me()
+        bot_me = await self.get_me()
         self.uptime = datetime.now()
-        self.username = usr_bot_me.username
+        self.username = bot_me.username
+        self.id = bot_me.id
 
 
-        self.LOGGER(__name__).info(f"SYSTEM IS ONLINE! 💝\nBOT IS RUNNING 🟢")
+        self.LOGGER(__name__).info(f"{bot_me.first_name} IS ONLINE! ✅\n Client ID: {bot_me.id} ⚡")
         #web-response
         app = web.AppRunner(await web_server())
         await app.setup()
