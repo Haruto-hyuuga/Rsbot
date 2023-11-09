@@ -1,7 +1,7 @@
 import os
 
-API_ID = 12621397
-API_HASH = "e68f9fdc9c8e562d9dab37ac3731a7b6"
+API_ID = 9855603
+API_HASH = "95d8b38bbb62d087dbf7b98abf670e78"
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 
 PORT = os.environ.get("PORT", "8080")
