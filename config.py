@@ -1,4 +1,4 @@
-
+botusername = "NeptuneaBot"
 GROUP = -1001525634215
 SUB_MAIN_BOT = "https://t.me/AnimeDL_Robot"
 DUB_MAIN_BOT = "https://t.me/AnimeDownLoader_Robot"
