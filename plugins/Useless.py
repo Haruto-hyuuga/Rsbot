@@ -117,12 +117,12 @@ async def speedtest_function(bot: Bot, message: Message):
     result = await loop.run_in_executor(None, testspeed, m)
     output = f"""
 <u>𝙎𝙋𝙀𝙀𝘿𝙏𝙀𝙎𝙏 𝙍𝙀𝙎𝙐𝙇𝙏𝙎:</u>
-```yml
-🖥️ 𝗖𝗟𝗜𝗘𝗡𝗧
+```css
+"🖥️  𝗖𝗟𝗜𝗘𝗡𝗧"
 ɪsᴩ:  {result['client']['isp']}
 ᴄᴏᴜɴᴛʀʏ:  {result['client']['country']}```
 ```css
-"📡 𝗦𝗘𝗥𝗩𝗘𝗥"
+"📡  𝗦𝗘𝗥𝗩𝗘𝗥"
 ɴᴀᴍᴇ:  {result['server']['name']}
 ᴄᴏᴜɴᴛʀʏ:  {result['server']['country']}, {result['server']['cc']}
 sᴩᴏɴsᴏʀ:  {result['server']['sponsor']}
