@@ -9,7 +9,7 @@ import psutil
 from pyrogram import __version__ as pyrover
 from config import ADMINS 
 
-async def stats_global():
+async def stats_global(ping_time, uptime):
     sc = platform.system()
     p_core = psutil.cpu_count(logical=False)
     t_core = psutil.cpu_count(logical=True)
@@ -49,10 +49,10 @@ async def stats_global():
 ᴩʏʀᴏɢʀᴀᴍ :  {pyrover}
 ᴍᴏᴅᴜʟᴇꜱ : 04
 ᴘᴀᴄᴋᴀɢᴇꜱ : 07
+
+<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🔋 UPTIME:__    **{uptime}**</blockquote>
 """
     return text
-
-
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -78,18 +78,15 @@ def get_readable_time(seconds: int) -> str:
 @Bot.on_message(filters.command(['uptime', 'ping', 'stats']) & filters.user(ADMINS))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
-    P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/3932401941f0bda36dd64.jpg")
+    P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg", caption="𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
     end_time = time.time()
     ping_time = round((end_time - start_time) * 1000, 3)
     
     now = datetime.now()
     delta = now - bot.uptime
     uptime = get_readable_time(delta.seconds)
-    sys_stats = await stats_global()
-    await P_MSG.edit(f"""{sys_stats}
-<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🔋 UPTIME:__    **{uptime}**</blockquote>
-"""
-    )
+    sys_stats = await stats_global(ping_time, uptime)
+    await P_MSG.edit(sys_stats)
 
 
 import asyncio
