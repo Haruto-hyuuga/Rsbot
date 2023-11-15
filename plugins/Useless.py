@@ -32,20 +32,20 @@ async def stats_global():
     
     text = f"""
 <blockquote>📟 𝙃𝘼𝙍𝘿𝙒𝘼𝙍𝙀</blockquote> ```css
-  | Platform:  {sc}
-  | Ram:  {ram}
-  | Physical-Cores:  {p_core}
-  | Total-Cores:  {t_core}
-  | CPU-Frequency:  {cpu_freq}```
+| Platform:  {sc}
+| Ram:  {ram}
+| Physical-Cores:  {p_core}
+| Total-Cores:  {t_core}
+| CPU-Frequency:  {cpu_freq}```
   
 <blockquote>💾 𝙎𝙏𝙊𝙍𝘼𝙂𝙀</blockquote> ```rust
-  | ᴀᴠᴀɪʟᴀʙʟᴇ:  {total[:4]} GiB
-  | ᴜsᴇᴅ:  {used[:4]} GiB
-  | ғʀᴇᴇ:  {free[:4]} GiB```
+| ᴀᴠᴀɪʟᴀʙʟᴇ:  {total[:4]} GiB
+| ᴜsᴇᴅ:  {used[:4]} GiB
+| ғʀᴇᴇ:  {free[:4]} GiB```
 
-<blockquote>💻 𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀</blockquote>
-  > ᴩʏᴛʜᴏɴ: **{pyver.split()[0]}**
-  > ᴩʏʀᴏɢʀᴀᴍ: **{pyrover}**
+<blockquote>💻 𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀</blockquote> ```python
+'ᴩʏᴛʜᴏɴ' :  {pyver.split()[0]}
+'ᴩʏʀᴏɢʀᴀᴍ' :  {pyrover}
 """
     return text
 
