@@ -38,13 +38,11 @@ async def stats_global():
  | Physical-Cores:  {p_core}
  | Total-Cores:  {t_core}
  | CPU-Frequency:  {cpu_freq}```
-
 ```rust
 💾 "𝙎𝙏𝙊𝙍𝘼𝙂𝙀"
   | ᴀᴠᴀɪʟᴀʙʟᴇ:  {total[:4]} GiB
   | ᴜsᴇᴅ:  {used[:4]} GiB
   | ғʀᴇᴇ:  {free[:4]} GiB```
-
 ```python
 💻 "𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀"
 ᴩʏᴛʜᴏɴ :  {pyver.split()[0]}
@@ -89,8 +87,7 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     uptime = get_readable_time(delta.seconds)
     sys_stats = await stats_global()
     await P_MSG.edit(f"""{sys_stats}
-__⚡ PING:__    **{ping_time} milliseconds**
-__🌍 UPTIME:__    **{uptime}** 
+<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🌍 UPTIME:__    **{uptime}**</blockquote>
 """
     )
 
