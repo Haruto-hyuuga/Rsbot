@@ -54,19 +54,21 @@ async def stats_global(ping_time, uptime):
  | Physical-Cores:  {p_core}
  | Total-Cores:  {t_core}
  | CPU-Frequency:  {cpu_freq}```
+ 
 ```rust
 💾 "𝙎𝙏𝙊𝙍𝘼𝙂𝙀"
   | ᴀᴠᴀɪʟᴀʙʟᴇ:  {total[:4]} GiB
   | ᴜsᴇᴅ:  {used[:4]} GiB
   | ғʀᴇᴇ:  {free[:4]} GiB```
+
 ```python
 💻 "𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀"
 ᴩʏᴛʜᴏɴ :  {pyver.split()[0]}
 ᴩʏʀᴏɢʀᴀᴍ :  {pyrover}
 ᴍᴏᴅᴜʟᴇꜱ : 04
-ᴘᴀᴄᴋᴀɢᴇꜱ : 07
+ᴘᴀᴄᴋᴀɢᴇꜱ : 07```
 
-<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🔋 UPTIME:__    **{uptime}**</blockquote>
+<blockquote>⚡ ᴘɪɴɢ:  {ping_time} ms</blockquote><blockquote>🔋 ᴜᴘᴛɪᴍᴇ:  {uptime}</blockquote>
 """
     return text
 
