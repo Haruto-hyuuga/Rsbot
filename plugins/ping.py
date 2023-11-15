@@ -144,7 +144,7 @@ async def speedtest_function(bot: Bot, message: Message):
 "🖥️  𝗖𝗟𝗜𝗘𝗡𝗧"
 ɪsᴩ:  {result['client']['isp']}
 ᴄᴏᴜɴᴛʀʏ:  {result['client']['country']}```
-```css 
+```css
 "📡  𝗦𝗘𝗥𝗩𝗘𝗥"
 ɴᴀᴍᴇ:  {result['server']['name']}
 ᴄᴏᴜɴᴛʀʏ:  {result['server']['country']}, {result['server']['cc']}
