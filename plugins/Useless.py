@@ -13,6 +13,7 @@ from sys import version as pyver
 import psutil
 from pyrogram import __version__ as pyrover
 from config import ADMINS 
+from HELPER import InvertMD_edit
 
 def create_close_b(UID):
     inline = InlineKeyboardMarkup(
@@ -96,7 +97,7 @@ def get_readable_time(seconds: int) -> str:
 @Bot.on_message(filters.command(['uptime', 'ping', 'stats']) & filters.user(ADMINS))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
-    P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg", caption="𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
+    P_MSG = await bot.send_message(message.chat.id, text="[⏳](https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg) 𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
     end_time = time.time()
     ping_time = round((end_time - start_time) * 1000, 3)
     
@@ -106,6 +107,8 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     sys_stats = await stats_global(ping_time, uptime)
     Buttons = create_close_b(message.from_user.id)
     await P_MSG.edit(sys_stats, reply_markup=Buttons)
+    await InvertMD_edit(bot, message.chat.id, P_MSG.id)
+    
 
 
 import asyncio
@@ -151,6 +154,5 @@ sᴩᴏɴsᴏʀ:  {result['server']['sponsor']}
     Buttons = create_close_b(message.from_user.id)
     await m.edit_media(Medit, reply_markup=Buttons)
     
-
 
 
