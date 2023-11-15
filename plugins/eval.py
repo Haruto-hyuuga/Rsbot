@@ -28,8 +28,8 @@ async def edit_or_reply(msg: Message, **kwargs):
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
 
-@app.on_edited_message(filters.command("run") & filters.user(OWNER_ID) & ~filters.via_bot)
-@app.on_message(filters.command("run") & filters.user(OWNER_ID) & ~filters.via_bot)
+@app.on_edited_message(filters.command("nep") & filters.user(OWNER_ID) & ~filters.via_bot)
+@app.on_message(filters.command("nep") & filters.user(OWNER_ID) & ~filters.via_bot)
 async def executor(client: app, message: Message):
     if len(message.command) < 2:
         return await edit_or_reply(message, text="<b>ᴡʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴇxᴇᴄᴜᴛᴇ ?</b>")
@@ -117,7 +117,7 @@ async def forceclose_command(_, CallbackQuery):
     if CallbackQuery.from_user.id != int(user_id):
         try:
             return await CallbackQuery.answer(
-                "» ɪᴛ'ʟʟ ʙᴇ ʙᴇᴛᴛᴇʀ ɪғ ʏᴏᴜ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs ʙᴀʙʏ.", show_alert=True
+                "🤡🫵", show_alert=True
             )
         except:
             return
