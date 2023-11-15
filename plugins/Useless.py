@@ -87,7 +87,7 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     uptime = get_readable_time(delta.seconds)
     sys_stats = await stats_global()
     await P_MSG.edit(f"""{sys_stats}
-<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🌍 UPTIME:__    **{uptime}**</blockquote>
+<blockquote>__⚡ PING:__    **{ping_time} ms**</blockquote><blockquote>__🔋 UPTIME:__    **{uptime}**</blockquote>
 """
     )
 
