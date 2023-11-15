@@ -31,12 +31,12 @@ async def stats_global():
     free = str(free)
     
     text = f"""
-<blockquote>📟 𝙃𝘼𝙍𝘿𝙒𝘼𝙍𝙀</blockquote>
-  > ᴩʟᴀᴛғᴏʀᴍ: **{sc}**
-  > ʀᴀᴍ: **{ram}**
-  > ᴩʜʏsɪᴄᴀʟ ᴄᴏʀᴇs: **{p_core}**
-  > ᴛᴏᴛᴀʟ ᴄᴏʀᴇs: **{t_core}**
-  > ᴄᴩᴜ ғʀᴇǫᴜᴇɴᴄʏ: **{cpu_freq}**
+<blockquote>📟 𝙃𝘼𝙍𝘿𝙒𝘼𝙍𝙀</blockquote> ```css
+  > Platform: {sc}
+  > Ram: {ram}
+  > Physical-Cores: {p_core}
+  > Total-Cores: {t_core}
+  > CPU-Frequency: {cpu_freq}```
   
 <blockquote>💾 𝙎𝙏𝙊𝙍𝘼𝙂𝙀</blockquote>
   > ᴀᴠᴀɪʟᴀʙʟᴇ: **{total[:4]} GiB**
