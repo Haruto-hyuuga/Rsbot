@@ -1,6 +1,11 @@
 import time
 from bot import Bot
-from pyrogram.types import Message, InputMediaPhoto
+from pyrogram.types import (
+Message, 
+InputMediaPhoto,
+InlineKeyboardButton, 
+InlineKeyboardMarkup
+)
 from pyrogram import filters
 from datetime import datetime
 import platform
@@ -8,6 +13,17 @@ from sys import version as pyver
 import psutil
 from pyrogram import __version__ as pyrover
 from config import ADMINS 
+
+def create_close_b(UID):
+    inline = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"forceclose abc|{UID}"),
+                InlineKeyboardButton(text="»ᴏᴡɴᴇʀ«", url="https://t.me/AnimeRobots"),
+            ]
+        ]
+    )
+    return inline
 
 async def stats_global(ping_time, uptime):
     sc = platform.system()
@@ -86,7 +102,8 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     delta = now - bot.uptime
     uptime = get_readable_time(delta.seconds)
     sys_stats = await stats_global(ping_time, uptime)
-    await P_MSG.edit(sys_stats)
+    Buttons = create_close_b(message.from_user.id)
+    await P_MSG.edit(sys_stats, reply_markup=Buttons)
 
 
 import asyncio
@@ -130,7 +147,8 @@ sᴩᴏɴsᴏʀ:  {result['server']['sponsor']}
 ᴩɪɴɢ:  {result['ping']}```
 """
     Medit = InputMediaPhoto(media=result["share"], caption=output)
-    await m.edit_media(Medit)
+    Buttons = create_close_b(message.from_user.id)
+    await m.edit_media(Medit, reply_markup=Buttons)
     
 
 
