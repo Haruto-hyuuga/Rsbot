@@ -66,3 +66,19 @@ async def get_stickers(app, short_name):
             print(f"Error parsing sticker: {e}")
 
     return sticker_list
+
+
+from pyrogram import raw
+from  pyrogram.utils import parse_text_entities
+
+async def InvertMD_edit(bot, chat_id, msg_id):
+    Peer = await bot.resolve_peer(chat_id)
+    X = await bot.get_messages(chat_id, msg_id)
+    Newmsg = X.text.html
+    await bot.invoke(raw.functions.messages.EditMessage(
+        peer=Peer,
+        id=msg_id,
+        **await parse_text_entities(bot, Newmsg, None, None),
+        reply_markup=await X.reply_markup.write(bot),
+        invert_media=True
+    ))
