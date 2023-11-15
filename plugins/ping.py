@@ -65,10 +65,10 @@ async def stats_global(ping_time, uptime):
 
 ```python
 💻 "𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀"
-ᴩʏᴛʜᴏɴ :  {pyver.split()[0]}
-ᴩʏʀᴏɢʀᴀᴍ :  {pyrover}
-ᴍᴏᴅᴜʟᴇꜱ : 04
-ᴘᴀᴄᴋᴀɢᴇꜱ : 07```
+ | ᴩʏᴛʜᴏɴ :  {pyver.split()[0]}
+ | ᴩʏʀᴏɢʀᴀᴍ :  {pyrover}
+ | ᴍᴏᴅᴜʟᴇꜱ : 04
+ | ᴘᴀᴄᴋᴀɢᴇꜱ : 07```
 
 <blockquote>[⚡](https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg) ᴘɪɴɢ:  {ping_time} ms</blockquote><blockquote>🔋 ᴜᴘᴛɪᴍᴇ:  {uptime}</blockquote>
 """
