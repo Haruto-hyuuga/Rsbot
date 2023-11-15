@@ -18,8 +18,8 @@ def create_close_b(UID):
     inline = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"forceclose abc|{UID}"),
-                InlineKeyboardButton(text="»ᴏᴡɴᴇʀ«", url="https://t.me/AnimeRobots"),
+                InlineKeyboardButton(text="ᴄʟᴏꜱᴇ", callback_data=f"forceclose abc|{UID}"),
+                InlineKeyboardButton(text="ʜᴏꜱᴛᴇᴅ ʙʏ", url="https://t.me/AnimeRobots"),
             ]
         ]
     )
@@ -140,8 +140,7 @@ async def speedtest_function(bot: Bot, message: Message):
 "🖥️  𝗖𝗟𝗜𝗘𝗡𝗧"
 ɪsᴩ:  {result['client']['isp']}
 ᴄᴏᴜɴᴛʀʏ:  {result['client']['country']}```
-```css
-"📡  𝗦𝗘𝗥𝗩𝗘𝗥"
+```css "📡  𝗦𝗘𝗥𝗩𝗘𝗥"
 ɴᴀᴍᴇ:  {result['server']['name']}
 ᴄᴏᴜɴᴛʀʏ:  {result['server']['country']}, {result['server']['cc']}
 sᴩᴏɴsᴏʀ:  {result['server']['sponsor']}
