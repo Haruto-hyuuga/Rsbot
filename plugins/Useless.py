@@ -14,6 +14,7 @@ import psutil
 from pyrogram import __version__ as pyrover
 from config import ADMINS 
 from HELPER import InvertMD_edit
+PINGimg = "https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg"
 
 def create_close_b(UID):
     inline = InlineKeyboardMarkup(
@@ -69,7 +70,7 @@ async def stats_global(ping_time, uptime):
 ᴍᴏᴅᴜʟᴇꜱ : 04
 ᴘᴀᴄᴋᴀɢᴇꜱ : 07```
 
-<blockquote>⚡ ᴘɪɴɢ:  {ping_time} ms</blockquote><blockquote>🔋 ᴜᴘᴛɪᴍᴇ:  {uptime}</blockquote>
+<blockquote>[⚡](https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg) ᴘɪɴɢ:  {ping_time} ms</blockquote><blockquote>🔋 ᴜᴘᴛɪᴍᴇ:  {uptime}</blockquote>
 """
     return text
 
@@ -97,7 +98,7 @@ def get_readable_time(seconds: int) -> str:
 @Bot.on_message(filters.command(['uptime', 'ping', 'stats']) & filters.user(ADMINS))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
-    P_MSG = await bot.send_message(message.chat.id, text="[⏳](https://telegra.ph/file/0d495a7d1892a3fbb9e20.jpg) 𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
+    P_MSG = await bot.send_message(message.chat.id, text=f"[⏳]({PINGimg}) 𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
     end_time = time.time()
     ping_time = round((end_time - start_time) * 1000, 3)
     
