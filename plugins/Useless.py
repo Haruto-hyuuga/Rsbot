@@ -106,8 +106,8 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     uptime = get_readable_time(delta.seconds)
     sys_stats = await stats_global(ping_time, uptime)
     Buttons = create_close_b(message.from_user.id)
-    await P_MSG.edit(sys_stats, reply_markup=Buttons)
-    await InvertMD_edit(bot, message.chat.id, P_MSG.id)
+#    await P_MSG.edit(sys_stats, reply_markup=Buttons)
+    await InvertMD_edit(bot, message.chat.id, P_MSG.id, sys_stats, Buttons)
     
 
 
