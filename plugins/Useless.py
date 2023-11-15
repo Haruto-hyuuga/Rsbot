@@ -43,7 +43,7 @@ async def stats_global():
   > ᴜsᴇᴅ: **{used[:4]} GiB**
   > ғʀᴇᴇ: **{free[:4]} GiB**
 
-<blockquote>💻 SOFTWARE</blockquote>
+<blockquote>💻 𝙎𝙊𝙁𝙏𝙒𝘼𝙍𝙀</blockquote>
   > ᴩʏᴛʜᴏɴ: **{pyver.split()[0]}**
   > ᴩʏʀᴏɢʀᴀᴍ: **{pyrover}**
 """
