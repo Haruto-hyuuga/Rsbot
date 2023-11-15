@@ -1,10 +1,102 @@
 import time
 from bot import Bot
-from pyrogram.types import Message
+from pyrogram.types import Message, InputMediaPhoto
 from pyrogram import filters
 from datetime import datetime
 
+import platform
+from sys import version as pyver
 
+import psutil
+from pyrogram import __version__ as pyrover
+
+from config import ADMINS
+from SCHWI import app 
+
+async def stats_global():
+    sc = platform.system()
+    p_core = psutil.cpu_count(logical=False)
+    t_core = psutil.cpu_count(logical=True)
+    ram = str(round(psutil.virtual_memory().total / (1024.0**3))) + " GB"
+    try:
+        cpu_freq = psutil.cpu_freq().current
+        if cpu_freq >= 1000:
+            cpu_freq = f"{round(cpu_freq / 1000, 2)}GHz"
+        else:
+            cpu_freq = f"{round(cpu_freq, 2)}MHz"
+    except:
+        cpu_freq = "Unable to Fetch"
+    hdd = psutil.disk_usage("/")
+    total = hdd.total / (1024.0**3)
+    total = str(total)
+    used = hdd.used / (1024.0**3)
+    used = str(used)
+    free = hdd.free / (1024.0**3)
+    free = str(free)
+    
+    text = f"""
+<b><u>📟 HARDWARE</b></u>
+  > ᴩʟᴀᴛғᴏʀᴍ: **{sc}**
+  > ʀᴀᴍ: **{ram}**
+  > ᴩʜʏsɪᴄᴀʟ ᴄᴏʀᴇs: **{p_core}**
+  > ᴛᴏᴛᴀʟ ᴄᴏʀᴇs: **{t_core}**
+  > ᴄᴩᴜ ғʀᴇǫᴜᴇɴᴄʏ: **{cpu_freq}**
+  
+<b><u>💾 STORAGE</b></u>
+  > ᴀᴠᴀɪʟᴀʙʟᴇ: **{total[:4]} GiB**
+  > ᴜsᴇᴅ: **{used[:4]} GiB**
+  > ғʀᴇᴇ: **{free[:4]} GiB**
+
+<b><u>💻 SOFTWARE</b></u>
+  > ᴩʏᴛʜᴏɴ: **{pyver.split()[0]}**
+  > ᴩʏʀᴏɢʀᴀᴍ: **{pyrover}**
+"""
+    return text
+
+
+import asyncio
+import speedtest
+
+def testspeed(m):
+    try:
+        test = speedtest.Speedtest()
+        test.get_best_server()
+        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        test.download()
+        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴜᴩʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        test.upload()
+        test.results.share()
+        result = test.results.dict()
+        m = m.edit("ᴜᴩʟᴏᴀᴅɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs...")
+    except Exception as e:
+        return m.edit(e)
+    return result
+
+
+@Bot.on_message(filters.command(["speedtest", "spd"]) & filters.user(ADMINS))
+async def speedtest_function(bot: Bot, message: Message):
+    m = await message.reply_animation(
+        animation="https://telegra.ph/file/2295b1f4737321f294e31.mp4",
+        caption="ᴛʀʏɪɴɢ ᴛᴏ ᴄʜᴇᴄᴋ ᴜᴩʟᴏᴀᴅ ᴀɴᴅ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ"
+    )
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(None, testspeed, m)
+    output = f"""**sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs**
+    
+<u>**ᴄʟɪᴇɴᴛ:**</u>
+**__ɪsᴩ:__** {result['client']['isp']}
+**__ᴄᴏᴜɴᴛʀʏ:__** {result['client']['country']}
+  
+<u>**sᴇʀᴠᴇʀ:**</u>
+**__ɴᴀᴍᴇ:__** {result['server']['name']}
+**__ᴄᴏᴜɴᴛʀʏ:__** {result['server']['country']}, {result['server']['cc']}
+**__sᴩᴏɴsᴏʀ:__** {result['server']['sponsor']}
+**__ʟᴀᴛᴇɴᴄʏ:__** {result['server']['latency']}  
+**__ᴩɪɴɢ:__** {result['ping']}"""
+    Medit = InputMediaPhoto(media=result["share"], caption=output)
+    await m.edit_media(Medit)
+    
+    
 def get_readable_time(seconds: int) -> str:
     count = 0
     up_time = ""
@@ -26,7 +118,7 @@ def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
     return up_time
 
-@Bot.on_message(filters.command(['uptime', 'ping']))
+@Bot.on_message(filters.command(['uptime', 'ping', 'stats']))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
     P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/3932401941f0bda36dd64.jpg")
@@ -36,12 +128,9 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     now = datetime.now()
     delta = now - bot.uptime
     uptime = get_readable_time(delta.seconds)
-    
-    await P_MSG.edit(f"""
+    sys_stats = await stats_global()
+    await P_MSG.edit(f"""{sys_stats}
 __⚡ PING:__    **{ping_time} milliseconds**
-
-__🌍 UPTIME:__    **{uptime}**
-
-__📡 HOSTED BY:__ @ANIMEROBOTS 
+__🌍 UPTIME:__    **{uptime}** 
 """
     )
