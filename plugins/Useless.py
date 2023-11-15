@@ -10,8 +10,7 @@ from sys import version as pyver
 import psutil
 from pyrogram import __version__ as pyrover
 
-from config import ADMINS
-from SCHWI import app 
+from config import ADMINS 
 
 async def stats_global():
     sc = platform.system()
@@ -118,7 +117,7 @@ def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
     return up_time
 
-@Bot.on_message(filters.command(['uptime', 'ping', 'stats']))
+@Bot.on_message(filters.command(['uptime', 'ping', 'stats']) & filters.user(ADMINS))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
     P_MSG = await bot.send_photo(message.chat.id, photo="https://telegra.ph/file/3932401941f0bda36dd64.jpg")
