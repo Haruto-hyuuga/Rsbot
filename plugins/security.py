@@ -6,6 +6,7 @@ ChatPermissions,
 InlineKeyboardButton, 
 InlineKeyboardMarkup
 )
+from pyrogram.enums import ChatMemberStatus
 from config import GROUP
 from bot import Bot as app
 import asyncio
@@ -92,6 +93,7 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
 async def welcome_sec1(app: app, message: Message): 
     try:
         if message.old_chat_member: return
+        if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         member = message.new_chat_member.user
         if member:
             RESTRICTED = await message.chat.restrict_member(
