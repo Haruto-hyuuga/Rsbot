@@ -3,13 +3,10 @@ from bot import Bot
 from pyrogram.types import Message, InputMediaPhoto
 from pyrogram import filters
 from datetime import datetime
-
 import platform
 from sys import version as pyver
-
 import psutil
 from pyrogram import __version__ as pyrover
-
 from config import ADMINS 
 
 async def stats_global():
@@ -53,49 +50,7 @@ async def stats_global():
     return text
 
 
-import asyncio
-import speedtest
 
-def testspeed(m):
-    try:
-        test = speedtest.Speedtest()
-        test.get_best_server()
-        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ...")
-        test.download()
-        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴜᴩʟᴏᴀᴅ sᴩᴇᴇᴅ...")
-        test.upload()
-        test.results.share()
-        result = test.results.dict()
-        m = m.edit("ᴜᴩʟᴏᴀᴅɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs...")
-    except Exception as e:
-        return m.edit(e)
-    return result
-
-
-@Bot.on_message(filters.command(["speedtest", "spd"]) & filters.user(ADMINS))
-async def speedtest_function(bot: Bot, message: Message):
-    m = await message.reply_animation(
-        animation="https://telegra.ph/file/2295b1f4737321f294e31.mp4",
-        caption="ᴛʀʏɪɴɢ ᴛᴏ ᴄʜᴇᴄᴋ ᴜᴩʟᴏᴀᴅ ᴀɴᴅ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ"
-    )
-    loop = asyncio.get_event_loop()
-    result = await loop.run_in_executor(None, testspeed, m)
-    output = f"""**sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs**
-    
-<u>**ᴄʟɪᴇɴᴛ:**</u>
-**__ɪsᴩ:__** {result['client']['isp']}
-**__ᴄᴏᴜɴᴛʀʏ:__** {result['client']['country']}
-  
-<u>**sᴇʀᴠᴇʀ:**</u>
-**__ɴᴀᴍᴇ:__** {result['server']['name']}
-**__ᴄᴏᴜɴᴛʀʏ:__** {result['server']['country']}, {result['server']['cc']}
-**__sᴩᴏɴsᴏʀ:__** {result['server']['sponsor']}
-**__ʟᴀᴛᴇɴᴄʏ:__** {result['server']['latency']}  
-**__ᴩɪɴɢ:__** {result['ping']}"""
-    Medit = InputMediaPhoto(media=result["share"], caption=output)
-    await m.edit_media(Medit)
-    
-    
 def get_readable_time(seconds: int) -> str:
     count = 0
     up_time = ""
@@ -133,3 +88,49 @@ __⚡ PING:__    **{ping_time} milliseconds**
 __🌍 UPTIME:__    **{uptime}** 
 """
     )
+
+
+import asyncio
+import speedtest
+
+def testspeed(m):
+    try:
+        test = speedtest.Speedtest()
+        test.get_best_server()
+        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        test.download()
+        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴜᴩʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        test.upload()
+        test.results.share()
+        result = test.results.dict()
+        m = m.edit("ᴜᴩʟᴏᴀᴅɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs...")
+    except Exception as e:
+        return m.edit(e)
+    return result
+
+@Bot.on_message(filters.command(["speedtest", "spd"]) & filters.user(ADMINS))
+async def speedtest_function(bot: Bot, message: Message):
+    m = await message.reply_animation(
+        animation="https://telegra.ph/file/2295b1f4737321f294e31.mp4",
+        caption="Running Speed Test"
+    )
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(None, testspeed, m)
+    output = f"""**sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs**
+    
+<u>**ᴄʟɪᴇɴᴛ:**</u>
+**__ɪsᴩ:__** {result['client']['isp']}
+**__ᴄᴏᴜɴᴛʀʏ:__** {result['client']['country']}
+  
+<u>**sᴇʀᴠᴇʀ:**</u>
+**__ɴᴀᴍᴇ:__** {result['server']['name']}
+**__ᴄᴏᴜɴᴛʀʏ:__** {result['server']['country']}, {result['server']['cc']}
+**__sᴩᴏɴsᴏʀ:__** {result['server']['sponsor']}
+**__ʟᴀᴛᴇɴᴄʏ:__** {result['server']['latency']}  
+**__ᴩɪɴɢ:__** {result['ping']}"""
+    Medit = InputMediaPhoto(media=result["share"], caption=output)
+    await m.edit_media(Medit)
+    
+
+
+
