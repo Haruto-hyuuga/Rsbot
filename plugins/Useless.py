@@ -96,13 +96,13 @@ def testspeed(m):
     try:
         test = speedtest.Speedtest()
         test.get_best_server()
-        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        m = m.edit("🟥 𝗖𝗵𝗲𝗰𝗸𝗶𝗻𝗴 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗦𝗽𝗲𝗲𝗱...")
         test.download()
-        m = m.edit("ᴄʜᴇᴄᴋɪɴɢ ᴜᴩʟᴏᴀᴅ sᴩᴇᴇᴅ...")
+        m = m.edit("🟨 𝗖𝗵𝗲𝗰𝗸𝗶𝗻𝗴 𝗨𝗣𝗟𝗢𝗔𝗗 𝗦𝗽𝗲𝗲𝗱...")
         test.upload()
         test.results.share()
         result = test.results.dict()
-        m = m.edit("ᴜᴩʟᴏᴀᴅɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs...")
+        m = m.edit("🟩 𝙂𝙚𝙩𝙩𝙞𝙣𝙜 𝙎𝙥𝙚𝙚𝙙𝙩𝙚𝙨𝙩 𝙍𝙚𝙨𝙪𝙡𝙩𝙨.")
     except Exception as e:
         return m.edit(e)
     return result
@@ -111,7 +111,7 @@ def testspeed(m):
 async def speedtest_function(bot: Bot, message: Message):
     m = await message.reply_animation(
         animation="https://telegra.ph/file/2295b1f4737321f294e31.mp4",
-        caption="Running Speed Test"
+        caption="<blockquote>Preparing For SpeedTest</blockquote>"
     )
     loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(None, testspeed, m)
