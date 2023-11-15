@@ -14,12 +14,12 @@ from bot import Bot as app
 from config import ADMINS as OWNER_ID
 
 
-async def aexec(code, client, message):
+async def aexec(code, app, message):
     exec(
-        "async def __aexec(client, message): "
+        "async def __aexec(app, message): "
         + "".join(f"\n {a}" for a in code.split("\n"))
     )
-    return await locals()["__aexec"](client, message)
+    return await locals()["__aexec"](app, message)
 
 
 async def edit_or_reply(msg: Message, **kwargs):
@@ -30,7 +30,7 @@ async def edit_or_reply(msg: Message, **kwargs):
 
 @app.on_edited_message(filters.command("nep") & filters.user(OWNER_ID) & ~filters.via_bot)
 @app.on_message(filters.command("nep") & filters.user(OWNER_ID) & ~filters.via_bot)
-async def executor(client: app, message: Message):
+async def executor(app: app, message: Message):
     if len(message.command) < 2:
         return await edit_or_reply(message, text="<b>ᴡʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴇxᴇᴄᴜᴛᴇ ?</b>")
     try:
@@ -44,7 +44,7 @@ async def executor(client: app, message: Message):
     redirected_error = sys.stderr = StringIO()
     stdout, stderr, exc = None, None, None
     try:
-        await aexec(cmd, client, message)
+        await aexec(cmd, app, message)
     except Exception:
         exc = traceback.format_exc()
     stdout = redirected_output.getvalue()
