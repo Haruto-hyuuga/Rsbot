@@ -3,3 +3,5 @@ tgcrypto
 dnspython
 pymongo
 aiohttp
+psutil
+speedtest-cli
