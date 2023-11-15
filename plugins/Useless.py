@@ -31,19 +31,19 @@ async def stats_global():
     free = str(free)
     
     text = f"""
-<b><u>📟 HARDWARE</b></u>
+<blockquote>📟 𝙃𝘼𝙍𝘿𝙒𝘼𝙍𝙀</blockquote>
   > ᴩʟᴀᴛғᴏʀᴍ: **{sc}**
   > ʀᴀᴍ: **{ram}**
   > ᴩʜʏsɪᴄᴀʟ ᴄᴏʀᴇs: **{p_core}**
   > ᴛᴏᴛᴀʟ ᴄᴏʀᴇs: **{t_core}**
   > ᴄᴩᴜ ғʀᴇǫᴜᴇɴᴄʏ: **{cpu_freq}**
   
-<b><u>💾 STORAGE</b></u>
+<blockquote>💾 𝙎𝙏𝙊𝙍𝘼𝙂𝙀</blockquote>
   > ᴀᴠᴀɪʟᴀʙʟᴇ: **{total[:4]} GiB**
   > ᴜsᴇᴅ: **{used[:4]} GiB**
   > ғʀᴇᴇ: **{free[:4]} GiB**
 
-<b><u>💻 SOFTWARE</b></u>
+<blockquote>💻 SOFTWARE</blockquote>
   > ᴩʏᴛʜᴏɴ: **{pyver.split()[0]}**
   > ᴩʏʀᴏɢʀᴀᴍ: **{pyrover}**
 """
