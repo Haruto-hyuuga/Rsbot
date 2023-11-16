@@ -95,7 +95,7 @@ def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
     return up_time
 
-@Bot.on_message(filters.command(['uptime', 'ping', 'stats']) & filters.user(ADMINS))
+@Bot.on_message(filters.command(['uptime', 'ping', 'stats']))
 async def Uptime_Ping_1(bot: Bot, message: Message):
     start_time = time.time()
     P_MSG = await bot.send_message(message.chat.id, text=f"[⏳]({PINGimg}) 𝙇𝙊𝘼𝘿𝙄𝙉𝙂...")
