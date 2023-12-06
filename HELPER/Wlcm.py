@@ -18,9 +18,9 @@ BASE_IMG = [
 async def gen_wlcm(app, member):
     i1 = Image.open(choice(BASE_IMG))
     try:
-        user_pic = await app.download_media(member.photo.big_file_id, f"PFPZ/{member.id}.jpg")
+        user_pic = await app.download_media(member.photo.big_file_id, f"Base/PFPZ/{member.id}.jpg")
     except:
-        user_pic = "Base/WPnone"
+        user_pic = "Base/PFPZ/WPnone.jpg"
     PFP = Image.open(user_pic)
     PFP = PFP.resize((320,320))
     i1.paste(PFP, (355,255))
