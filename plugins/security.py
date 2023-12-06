@@ -17,15 +17,15 @@ add_user,
 add_ruser_msg,
 get_user
 )
+SPIC = ["https://graph.org/file/3ad7a84ee06897b580ced.jpg"]
 
 
-SPIC = [
-    "https://graph.org/file/3ad7a84ee06897b580ced.jpg"
-]
 SCAP = """
-__Welcome!__ {} [`{}`] 
+{} __Welcome!__ {} [`{}`] 
+    {} Kindly read Group: /rules 
+        {} Enjoy your stay.
 
-**__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__please read__ /details  and  /rules __and you will get unrestricted within few weeks.__</blockquote>
+**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details click:__ 👉🏻 /details</blockquote>
 """
 
 NNM_EXT = "This action is taken to prevent spammers and the sharing of inappropriate or harmful content."
