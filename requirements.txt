@@ -4,4 +4,4 @@ dnspython
 pymongo
 aiohttp
 psutil
-speedtest-cli
+pillow
