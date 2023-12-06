@@ -112,9 +112,9 @@ async def Uptime_Ping_1(bot: Bot, message: Message):
     
 
 
-import asyncio
-import speedtest
-
+#import asyncio
+#import speedtest
+"""
 def testspeed(m):
     try:
         test = speedtest.Speedtest()
@@ -138,7 +138,7 @@ async def speedtest_function(bot: Bot, message: Message):
     )
     loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(None, testspeed, m)
-    output = f"""
+    output = f"
 <u>𝙎𝙋𝙀𝙀𝘿𝙏𝙀𝙎𝙏 𝙍𝙀𝙎𝙐𝙇𝙏𝙎:</u>
 ```css
 "🖥️  𝗖𝗟𝗜𝗘𝗡𝗧"
@@ -151,10 +151,10 @@ async def speedtest_function(bot: Bot, message: Message):
 sᴩᴏɴsᴏʀ:  {result['server']['sponsor']}
 ʟᴀᴛᴇɴᴄʏ:  {result['server']['latency']}  
 ᴩɪɴɢ:  {result['ping']}```
-"""
+"
     Medit = InputMediaPhoto(media=result["share"], caption=output)
     Buttons = create_close_b(message.from_user.id)
     await m.edit_media(Medit, reply_markup=Buttons)
     
-
+"""
 
