@@ -45,4 +45,13 @@ async def gen_wlcm(app, member):
     finally:
         try: os.remove(f"Base/PFPZ/{member.id}.jpg")
         except: pass
-    
+
+
+
+hearts_emojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🩷', '🩵', '🩶', '🖤', '♥️', '💖', '💕', '💞', '💓', '💗', '💝', '💘']
+
+def hearts():
+    X = choice(hearts_emojis)
+    Y = choice(hearts_emojis)
+    Z = choice(hearts_emojis)
+    return X, Y, Z
