@@ -1,2 +1,2 @@
 from .helperFunc import*
-from .Wlcm import*
+from .wlcmFunc import*
