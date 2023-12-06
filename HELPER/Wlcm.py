@@ -14,7 +14,9 @@ BASE_IMG = [
     'Base/WP11', 
     'Base/WP12'
 ]
-
+STK_IMG = [
+    'Base/STK'
+]
 async def gen_wlcm(app, member):
     i1 = Image.open(choice(BASE_IMG))
     try:
@@ -25,8 +27,10 @@ async def gen_wlcm(app, member):
     PFP = PFP.resize((320,320))
     i1.paste(PFP, (355,255))
     
-    square = Image.open("downloads/stk.jpg")
-    i1.paste(square, (-20,210), mask=square)
+    STK = Image.open(choice(STK_IMG))
+    STK = STK.resize((450,450))
+    i1.paste(STK, (-20,270), mask=STK)
+    
     draw = ImageDraw.Draw(i1)
-    draw.text((20, 20), f"[{message.from_user.id}] | @AnimeChatCommunity\n{message.date}", fill="black", stroke_width=10, stroke_fill="white")
+    draw.text((0,0), f" @AnimeChatCommunity\n{message.date} | [{member.id}]", fill="black", stroke_width=6, stroke_fill="white")
     i1.save(f"downloads/pic1.jpg")
