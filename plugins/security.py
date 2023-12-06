@@ -10,7 +10,13 @@ from pyrogram.enums import ChatMemberStatus
 from config import GROUP
 from bot import Bot as app
 import asyncio
-from HELPER import callback_filter, handle_exception, cmd
+from HELPER import (
+callback_filter,
+handle_exception,
+cmd,
+gen_wlcm,
+hearts
+)
 from HELPER.Database import (
 present_user, 
 add_user, 
@@ -23,10 +29,8 @@ SPIC = ["https://graph.org/file/3ad7a84ee06897b580ced.jpg"]
 SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} Kindly read Group: /rules 
-        {} Enjoy your stay.
-
-**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details click:__ 👉🏻 /details</blockquote>
-"""
+        {} Enjoy your stay."""
+RA_SCAP = "**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details click:__ 👉🏻 /details</blockquote>"
 
 NNM_EXT = "This action is taken to prevent spammers and the sharing of inappropriate or harmful content."
 
@@ -115,28 +119,34 @@ async def welcome_sec1(app: app, message: Message):
             invkeyar = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="DETAILS ℹ️", callback_data=f"SRinfo:Explain${member.id}"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),
+                        InlineKeyboardButton(text="COMPLETE RULES & PUNISHMENTS", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),
                     ]
                 ]
             )
-            
+            X, Y, Z = hearts()
+            wlcm_txt = SCAP.format(X, Username, member.id, Y, Z)
             if RESTRICTED:
+                invkeyar = InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),
+                        ]
+                    ]
+                )
+                wlcm_txt += RA_SCAP
                 await app.send_message(
                     chat_id=-1001649033559,
                     text=f"🔷 #TEMP_MUTE\n» user: {Username} [`{member.id}`]\n»group: {message.chat.title}\n#id{member.id}"
                 )
-                await asyncio.sleep(10)
-                await app.send_photo(
-                    chat_id=message.chat.id,
-                    photo=SPIC[0],
-                    caption=SCAP.format(Username, member.id),
-                    reply_markup=invkeyar
-                )
                 if not await present_user(member.id):
                     await add_user(member.id)
+            wlcm_pic = await gen_wlcm(app, member)
+            await app.send_photo(
+                chat_id=message.chat.id,
+                photo=wlcm_pic,
+                caption=wlcm_txt,
+                reply_markup=invkeyar
+            )
     except Exception: return await handle_exception(app)
 
 
