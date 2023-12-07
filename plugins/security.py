@@ -32,7 +32,7 @@ SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} Kindly read Group: /rules 
         {} Enjoy your stay."""
-RA_SCAP = "\n\n**❗__@{} Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
+RA_SCAP = "\n\n**❗__{} Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
 
 
 MAGREE = """
