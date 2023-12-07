@@ -141,7 +141,7 @@ async def welcome_sec1(app: app, message: Message):
 
 
 @app.on_edited_message(cmd(["sr", "rs"]) & filters.group & filters.chat(GROUP))
-@app.on_message(cmd(["sr", "rs"]) & filters.group & filters.chat(GROUP))
+@app.on_message(cmd(["sr", "rs", "details"]) & filters.group & filters.chat(GROUP))
 async def Stickersecmsg(app: app, message: Message):
     member = message.from_user
     MId = message.id
