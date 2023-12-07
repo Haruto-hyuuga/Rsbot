@@ -24,6 +24,7 @@ add_ruser_msg,
 get_user
 )
 SPIC = ["https://graph.org/file/3ad7a84ee06897b580ced.jpg"]
+Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
 
 
 SCAP = """
@@ -34,10 +35,13 @@ RA_SCAP = "\n\n**❗__@{} Your media permissions have been temporarily restricte
 
 
 MAGREE = """
-𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 @{} 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴. <blockquote><b>If you have any questions or need assistance, feel free to ask using: /report \nMedia restriction info: /details</b></blockquote>
-"""
-Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
-            
+{} __Welcome!__ {} [`{}`] 
+    {} Thankyou for understanding.
+        {} Enjoy your stay.
+<blockquote>Media restriction info: /details </blockquote><blockquote>Channels connect to group: /links</blockquote><blockquote>Read group regulations and guidelines: /rules </blockquote><blockquote>If you have any questions or need admins assistance: /report </blockquote>"""
+
+
+
 @app.on_callback_query(callback_filter('SRinfo'))
 async def Admaction_callback_5(app: Client, query: CallbackQuery):
     Data = query.data.split(":")[1]
