@@ -11,7 +11,7 @@ del_user
 )
 
 
-@bot.on_message(filters.chat(GROUP) & filters.group, group=5)
+@bot.on_message(filters.chat(GROUP) & filters.group & filters.text, group=5)
 async def mgc_allmsg(bot: bot, message: Message):
     try:
         user = message.from_user
@@ -24,5 +24,4 @@ async def mgc_allmsg(bot: bot, message: Message):
                     await message.chat.unban_member(user.id)
                     await del_user(user.id)
                     await message.reply(f"👤 {user.mention} [`{user.id}`] completed 100 messages!\nYou can now send stickers and media.")
-    except Exception:
-        await handle_exception(bot)
+    except Exception: return await handle_exception(bot)
