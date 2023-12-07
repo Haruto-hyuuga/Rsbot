@@ -74,6 +74,7 @@ async def welcome_sec1(app: app, message: Message):
         member = message.new_chat_member.user
         if message.old_chat_member:
             if message.new_chat_member.user.id != message.old_chat_member.user.id: return
+            if message.new_chat_member.is_member is False: return 
             if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
                 wlcm_pic = await gen_wlcm(app, member)
                 X, Y, Z = hearts()
