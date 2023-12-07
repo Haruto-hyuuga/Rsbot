@@ -54,7 +54,7 @@ This ensures that you understand our guidelines and actively contributing to our
 MAGREE = """
 𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴. <blockquote><b>If you have any questions or need assistance, feel free to ask. Welcome and enjoy your time in our group.</b></blockquote>
 """
-Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="READ COMPLETE RULES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
+Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
             
 @app.on_callback_query(callback_filter('SRinfo'))
 async def Admaction_callback_5(app: Client, query: CallbackQuery):
@@ -62,15 +62,6 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
     Update = query.message
     UID = query.from_user.id
     try:
-        if Data.startswith("Explain$"):
-            ouid = Data.split("$")[-1]
-            OUID = int(ouid)
-            if OUID != UID:
-                try: await query.answer(NNM_EXT, show_alert=True)
-                except: await query.answer(NNM_EXT, show_alert=True)
-                return
-            Username = f"@{query.from_user.username}" if query.from_user.username else f"{query.from_user.mention}"
-            await Update.edit(f"👤 {Username} [`{OUID}`]\n{SCAP_E2}", reply_markup=Ronvkeyar)
         elif Data.startswith("TCA$"):
             ouid = Data.split("$")[-1]
             OUID = int(ouid)
@@ -116,7 +107,7 @@ async def welcome_sec1(app: app, message: Message):
                 ),
             )
             Username = f"@{member.username}" if member.username else f"{member.mention}"
-            invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & PUNISHMENTS", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
+            invkeyar = Ronvkeyar
             X, Y, Z = hearts()
             wlcm_txt = SCAP.format(X, Username, member.id, Y, Z)
             if RESTRICTED:
@@ -140,7 +131,7 @@ async def welcome_sec1(app: app, message: Message):
 
 
 
-@app.on_edited_message(cmd(["sr", "rs"]) & filters.group & filters.chat(GROUP))
+
 @app.on_message(cmd(["sr", "rs", "details"]) & filters.group & filters.chat(GROUP))
 async def Stickersecmsg(app: app, message: Message):
     member = message.from_user
