@@ -6,6 +6,8 @@ from HELPER import handle_exception
 from HELPER.Database import (
 present_user, 
 add_ruser_msg,
+get_user,
+del_user
 )
 
 
@@ -15,7 +17,12 @@ async def mgc_allmsg(bot: bot, message: Message):
         user = message.from_user
         if message.text:
             if await present_user(user.id):
-                if len(message.text) >= 70:
+                if len(message.text) >= 50:
                     await add_ruser_msg(user.id)
+                Msgs = await get_user(user.id)
+                if int(Msgs) >= 100:
+                    await message.chat.unban_member(user.id)
+                    await del_user(user.id)
+                    await message.reply(f"👤 {user.mention} [`{user.id}`] completed 100 messages!\nYou can now send stickers and media.")
     except Exception:
         await handle_exception(bot)
