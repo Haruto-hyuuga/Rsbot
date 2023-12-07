@@ -35,11 +35,10 @@ RA_SCAP = "\n\n**❗__@{} Your media permissions have been temporarily restricte
 
 
 MAGREE = """
-{} __Welcome!__ {} [`{}`] 
-    {} Thankyou for understanding.
-        {} Enjoy your stay.
-<blockquote>Media restriction info: /details </blockquote><blockquote>Channels connect to group: /links</blockquote><blockquote>Read group regulations and guidelines: /rules </blockquote><blockquote>If you have any questions or need admins assistance: /report </blockquote>"""
-
+{} **Welcome!** {} [{}] 
+    {} **Thankyou for understanding.**
+        {} **Abide by rules and enjoy your stay.**
+<blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>If you have any questions or need admins assistance:  /report </blockquote>"""
 
 
 @app.on_callback_query(callback_filter('SRinfo'))
@@ -52,10 +51,11 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
             ouid = Data.split("$")[-1]
             if int(ouid) != UID:
                 return await query.answer("This Is Not For You, Let The New Member Agree To Terms & Condition", show_alert=True)
-            Username = f"@{query.from_user.username}" if query.from_user.username else f"{query.from_user.mention}"
             X, Y, Z = hearts()
-            await Update.edit(f"{SCAP.format(X, query.from_user.mention, ouid, Y, Z)}\n\n{MAGREE.format(Username)}", reply_markup=Ronvkeyar)
-        
+            await Update.edit(
+                MAGREE.format(X, query.from_user.mention, ouid, Y, Z),
+                reply_markup=Ronvkeyar
+            )
         elif Data.startswith("CLOSE$"):
             ouid = Data.split("$")[-1]
             if int(ouid) != UID: return await query.answer("This Is Not For You!", show_alert=True)
