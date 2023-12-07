@@ -30,11 +30,11 @@ SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} Kindly read Group: /rules 
         {} Enjoy your stay."""
-RA_SCAP = "\n\n**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
+RA_SCAP = "\n\n**❗__@{} Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
 
 
 MAGREE = """
-𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴. <blockquote><b>If you have any questions or need assistance, feel free to ask. Welcome and enjoy your time in our group.</b></blockquote>
+𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 @{} 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴. <blockquote><b>If you have any questions or need assistance, feel free to ask using: /report \nMedia restriction info: /details</b></blockquote>
 """
 Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
             
@@ -48,9 +48,9 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
             ouid = Data.split("$")[-1]
             if int(ouid) != UID:
                 return await query.answer("This Is Not For You, Let The New Member Agree To Terms & Condition", show_alert=True)
-            onvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="DETAILS ℹ️", callback_data=f"SRinfo:Explain${ouid}"),],])
             Username = f"@{query.from_user.username}" if query.from_user.username else f"{query.from_user.mention}"
-            await Update.edit(f"👤 {Username} [`{ouid}`]\n{MAGREE}", reply_markup=onvkeyar)
+            X, Y, Z = hearts()
+            await Update.edit(f"{SCAP.format(X, query.from_user.mention, ouid, Y, Z)}\n\n{MAGREE.format(Username)}", reply_markup=Ronvkeyar)
         
         elif Data.startswith("CLOSE$"):
             ouid = Data.split("$")[-1]
@@ -85,10 +85,10 @@ async def welcome_sec1(app: app, message: Message):
             Username = f"@{member.username}" if member.username else f"{member.mention}"
             invkeyar = Ronvkeyar
             X, Y, Z = hearts()
-            wlcm_txt = SCAP.format(X, Username, member.id, Y, Z)
+            wlcm_txt = SCAP.format(X, member.mention, member.id, Y, Z)
             if RESTRICTED:
                 invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),]])
-                wlcm_txt += RA_SCAP
+                wlcm_txt += RA_SCAP.format(Username)
                 await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n @{Username}\n»group: {message.chat.title}\n#id{member.id}")
                 if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
