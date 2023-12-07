@@ -32,24 +32,6 @@ SCAP = """
         {} Enjoy your stay."""
 RA_SCAP = "\n\n**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
 
-NNM_EXT = "This action is taken to prevent spammers and the sharing of inappropriate or harmful content."
-
-NFY_TX = "This Is Not For You, Let The New Member Agree To Terms & Condition"
-
-SCAP_E2 = """
-<u>𝗔𝗻𝗶𝗺𝗲 𝗖𝗵𝗮𝘁 𝗖𝗼𝗺𝗺𝘂𝗻𝗶𝘁𝘆 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗦𝘆𝘀𝘁𝗲𝗺</u>
-__To ensure a safe and enjoyable environment for all members, we've implemented some security measures. Which involves temporarily restricting media permissions for newer members.__
-**__This action is taken to prevent spammers and the sharing of inappropriate or harmful content in group.__**
-
-To regain your media permissions:
-<blockquote>You have to be part of group for atleast 30 Days.</blockquote>
-<blockquote>You must be active and sent atleast 100 meaningful messages.</blockquote>
-
-```python
-This ensures that you understand our guidelines and actively contributing to our community.
-'Once you meet these requirements, feel free to remind Admins, and we‘ll promptly unrestrict your media permissions. Thank you for your understanding and cooperation. If you have any questions or concerns, don’t hesitate to ask. Welcome to the group!'
-```
-"""
 
 MAGREE = """
 𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝘆𝗼𝘂𝗿 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴. <blockquote><b>If you have any questions or need assistance, feel free to ask. Welcome and enjoy your time in our group.</b></blockquote>
@@ -62,23 +44,17 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
     Update = query.message
     UID = query.from_user.id
     try:
-        elif Data.startswith("TCA$"):
+        if Data.startswith("TCA$"):
             ouid = Data.split("$")[-1]
-            OUID = int(ouid)
-            if OUID != UID:
-                try: await query.answer(NFY_TX, show_alert=True)
-                except: await query.answer(NFY_TX, show_alert=True)
-                return
-            onvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="DETAILS ℹ️", callback_data=f"SRinfo:Explain${OUID}"),],])
+            if int(ouid) != UID:
+                return await query.answer("This Is Not For You, Let The New Member Agree To Terms & Condition", show_alert=True)
+            onvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="DETAILS ℹ️", callback_data=f"SRinfo:Explain${ouid}"),],])
             Username = f"@{query.from_user.username}" if query.from_user.username else f"{query.from_user.mention}"
-            await Update.edit(f"👤 {Username} [`{OUID}`]\n{MAGREE}", reply_markup=onvkeyar)
+            await Update.edit(f"👤 {Username} [`{ouid}`]\n{MAGREE}", reply_markup=onvkeyar)
+        
         elif Data.startswith("CLOSE$"):
             ouid = Data.split("$")[-1]
-            OUID = int(ouid)
-            if OUID != UID:
-                try: await query.answer(NFY_TX, show_alert=True)
-                except: await query.answer(NFY_TX, show_alert=True)
-                return
+            if int(ouid) != UID: return await query.answer("This Is Not For You!", show_alert=True)
             await Update.delete()
             await query.answer("Thanks For Understanding 🩷", show_alert=False)
         else:
@@ -131,6 +107,20 @@ async def welcome_sec1(app: app, message: Message):
 
 
 
+SCAP_E2 = """
+<u>𝗔𝗻𝗶𝗺𝗲 𝗖𝗵𝗮𝘁 𝗖𝗼𝗺𝗺𝘂𝗻𝗶𝘁𝘆 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗦𝘆𝘀𝘁𝗲𝗺</u>
+__To ensure a safe and enjoyable environment for all members, we've implemented some security measures. Which involves temporarily restricting media permissions for newer members.__
+**__This action is taken to prevent spammers and the sharing of inappropriate or harmful content in group.__**
+
+To regain your media permissions:
+<blockquote>You have to be part of group for atleast 30 Days.</blockquote>
+<blockquote>You must be active and sent atleast 100 meaningful messages.</blockquote>
+
+```python
+This ensures that you understand our guidelines and actively contributing to our community.
+'Once you meet these requirements, feel free to remind Admins, and we‘ll promptly unrestrict your media permissions. Thank you for your understanding and cooperation. If you have any questions or concerns, don’t hesitate to ask. Welcome to the group!'
+```
+"""
 
 @app.on_message(cmd(["sr", "rs", "details"]) & filters.group & filters.chat(GROUP))
 async def Stickersecmsg(app: app, message: Message):
