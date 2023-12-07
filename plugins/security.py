@@ -107,7 +107,7 @@ async def welcome_sec1(app: app, message: Message):
                 if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
             if message.from_user.id != member.id:
-                wlcm_txt += f"hm"
+                wlcm_txt += f"\n\n🫂 Thanks {message.from_user.mention} for inviting {member.mention}"
             await app.send_photo(
                 chat_id=message.chat.id,
                 photo=wlcm_pic,
