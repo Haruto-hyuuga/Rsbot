@@ -116,7 +116,12 @@ async def welcome_sec1(app: app, message: Message):
                 reply_markup=invkeyar
             )
             os.remove(wlcm_pic)
-    except Exception: 
+    except Exception:
+        FileN = f"Error_{message.id}.json"
+        with open(FileN, "w+", encoding="utf8") as out_file:
+            out_file.write(str(message))       
+        await app.send_document(5329765587, document=FileN)
+        os.remove(FileN)
         return await handle_exception(app)
 
 
