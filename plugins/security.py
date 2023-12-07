@@ -39,7 +39,7 @@ MAGREE = """
 {} **Welcome!** {} [`{}`] 
     {} **Thankyou for understanding.**
         {} **Abide by rules and enjoy your stay.**
-<blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>If you have any questions or need admins assistance:  /report </blockquote>"""
+<blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>For queries or admins assistance:  /report </blockquote>"""
 
 
 @app.on_callback_query(callback_filter('SRinfo'))
