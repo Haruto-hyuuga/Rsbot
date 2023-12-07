@@ -116,30 +116,14 @@ async def welcome_sec1(app: app, message: Message):
                 ),
             )
             Username = f"@{member.username}" if member.username else f"{member.mention}"
-            invkeyar = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="COMPLETE RULES & PUNISHMENTS", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),
-                    ]
-                ]
-            )
+            invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & PUNISHMENTS", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
             X, Y, Z = hearts()
             wlcm_txt = SCAP.format(X, Username, member.id, Y, Z)
             if RESTRICTED:
-                invkeyar = InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),
-                        ]
-                    ]
-                )
+                invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),]])
                 wlcm_txt += RA_SCAP
-                await app.send_message(
-                    chat_id=-1001649033559,
-                    text=f"🔷 #TEMP_MUTE\n» user: {Username} [`{member.id}`]\n»group: {message.chat.title}\n#id{member.id}"
-                )
-                if not await present_user(member.id):
-                    await add_user(member.id)
+                await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n @{Username}\n»group: {message.chat.title}\n#id{member.id}")
+                if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
             await app.send_photo(
                 chat_id=message.chat.id,
@@ -150,6 +134,12 @@ async def welcome_sec1(app: app, message: Message):
     except Exception: return await handle_exception(app)
 
 
+
+
+
+
+
+
 @app.on_edited_message(cmd(["sr", "rs"]) & filters.group & filters.chat(GROUP))
 @app.on_message(cmd(["sr", "rs"]) & filters.group & filters.chat(GROUP))
 async def Stickersecmsg(app: app, message: Message):
@@ -158,22 +148,9 @@ async def Stickersecmsg(app: app, message: Message):
     if message.reply_to_message:
         member = message.reply_to_message.from_user
         MId = message.reply_to_message.id
-        
     Username = f"@{member.username}" if member.username else f"{member.mention}"
-    invkeyar = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:CLOSE${member.id}"),
-            ]
-        ]
-    )
-    await app.send_photo(
-        chat_id=message.chat.id,
-        photo=SPIC[0],
-        caption=f"👤 {Username} [`{member.id}`]\n{SCAP_E2}",
-        reply_markup=invkeyar,
-        reply_to_message_id=MId
-    )
+    invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="Understood | Close ✅", callback_data=f"SRinfo:CLOSE${member.id}"),]])
+    await app.send_photo(chat_id=message.chat.id,photo=SPIC[0],caption=f"👤 {Username} [`{member.id}`]\n{SCAP_E2}",reply_markup=invkeyar,reply_to_message_id=MId)
 
 @app.on_message(cmd(["cm", "minfo"]) & filters.group & filters.chat(GROUP))
 async def resusermsgcount(app: app, message: Message):
@@ -181,18 +158,11 @@ async def resusermsgcount(app: app, message: Message):
         member = message.from_user
         if message.reply_to_message:
             member = message.reply_to_message.from_user
-
-        M = "Null"
+        M = None
         if await present_user(member.id):
             M = await get_user(member.id)
-            if not M:
-                return await message.reply("Not Restricted By Me ツ")
+            if not M: return await message.reply("Not Restricted By Me ツ")
         Username = f"@{member.username}" if member.username else f"{member.mention}"
         invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:CLOSE${member.id}"),]])
-        await app.send_photo(
-            chat_id=message.chat.id,
-            photo="https://telegra.ph/file/69e674055f9de65d40b7b.jpg",
-            caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",
-            reply_markup=invkeyar,
-        )
+        await app.send_photo(chat_id=message.chat.id,photo="https://telegra.ph/file/69e674055f9de65d40b7b.jpg",caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
     except Exception: return await handle_exception(app)
