@@ -41,6 +41,7 @@ MAGREE = """
         {} **Abide by rules and enjoy your stay.**
 <blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>For queries or admins assistance:  /report </blockquote>"""
 
+WHITE_LIST = []
 
 @app.on_callback_query(callback_filter('SRinfo'))
 async def Admaction_callback_5(app: Client, query: CallbackQuery):
@@ -67,7 +68,7 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
     except Exception: return await handle_exception(app)
 
 
-@app.on_chat_member_updated(filters.chat(GROUP))
+@app.on_chat_member_updated(filters.chat(GROUP) & ~filters.user(WHITE_LIST))
 async def welcome_sec1(app: app, message: Message):
     try:
         member = message.new_chat_member.user
