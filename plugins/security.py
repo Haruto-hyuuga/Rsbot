@@ -73,7 +73,7 @@ async def welcome_sec1(app: app, message: Message):
         if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         member = message.new_chat_member.user
         if message.old_chat_member:
-            if message.new_chat_member.user.id != message.old_chat_member.user.id: return
+            if message.from_user.id != message.old_chat_member.user.id: return
             if message.new_chat_member.is_member is False: return 
             if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
                 wlcm_pic = await gen_wlcm(app, member)
@@ -106,6 +106,8 @@ async def welcome_sec1(app: app, message: Message):
                 await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n {Username}\n»group: {message.chat.title}\n#id{member.id}")
                 if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
+            if message.from_user.id != member.id:
+                wlcm_txt += f"hm"
             await app.send_photo(
                 chat_id=message.chat.id,
                 photo=wlcm_pic,
