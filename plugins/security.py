@@ -1,4 +1,5 @@
 from pyrogram import filters, Client
+import os
 from pyrogram.types import (
 Message,
 CallbackQuery,
@@ -102,6 +103,7 @@ async def welcome_sec1(app: app, message: Message):
                 caption=wlcm_txt,
                 reply_markup=invkeyar
             )
+            os.remove(f"Base/PFPZ/pic{member.id}.jpg")
     except Exception: return await handle_exception(app)
 
 
