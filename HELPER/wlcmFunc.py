@@ -1,6 +1,6 @@
 import os
 from random import choice, sample
-from PIL import Image, ImageDraw
+from PIL import Image
 ERR_IMG = "https://telegra.ph/file/2de95979a8b2b56ce6937.jpg"
 from HELPER import handle_exception
 
@@ -34,9 +34,7 @@ async def gen_wlcm(app, member):
         STK = Image.open(choice(STK_IMG))
         STK = STK.resize((450,450))
         i1.paste(STK, (-20,270), mask=STK)
-    
-        draw = ImageDraw.Draw(i1)
-        draw.text((0,0), f" @AnimeChatCommunity | [{member.id}]", fill="black", stroke_width=6, stroke_fill="white")
+        
         i1.save(f"Base/PFPZ/pic{member.id}.jpg")
         return f"Base/PFPZ/pic{member.id}.jpg"
     except Exception:
