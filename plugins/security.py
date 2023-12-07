@@ -32,7 +32,7 @@ SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} Kindly read Group: /rules 
         {} Enjoy your stay."""
-RA_SCAP = "\n\n**❗__{} Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
+RA_SCAP = "\n\n**❗__{} Your media permissions have been temporarily restricted for security reasons.__** <pre>__you will be unrestricted within few weeks for details click button below__</pre>"
 
 
 MAGREE = """
@@ -107,7 +107,8 @@ async def welcome_sec1(app: app, message: Message):
                 if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
             if message.from_user.id != member.id:
-                wlcm_txt += f"\n<pre>🫂 Thanks {message.from_user.mention} for inviting {member.mention}</pre>"
+                addder = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.mention}"
+                wlcm_txt += f"\n<blockquote>🫂 Thanks {addder} for inviting {Username}</blockquote>"
             await app.send_photo(
                 chat_id=message.chat.id,
                 photo=wlcm_pic,
