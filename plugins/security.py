@@ -8,7 +8,7 @@ InlineKeyboardButton,
 InlineKeyboardMarkup
 )
 from pyrogram.enums import ChatMemberStatus
-from config import GROUP
+from config import GROUP, ADMINS
 from bot import Bot as app
 import asyncio
 from HELPER import (
@@ -68,7 +68,7 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
     except Exception: return await handle_exception(app)
 
 
-@app.on_chat_member_updated(filters.chat(GROUP) & ~filters.user(WHITE_LIST))
+@app.on_chat_member_updated(filters.chat(GROUP))
 async def welcome_sec1(app: app, message: Message):
     try:
         member = message.new_chat_member.user
@@ -174,3 +174,16 @@ async def resusermsgcount(app: app, message: Message):
         invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:CLOSE${member.id}"),]])
         await app.send_photo(chat_id=message.chat.id,photo="https://telegra.ph/file/69e674055f9de65d40b7b.jpg",caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
     except Exception: return await handle_exception(app)
+
+@app.on_message(cmd(["wurs", "vers"]) & filters.user(ADMINS))
+async def whitelistuser(app: app, message: Message):
+    try:
+        if message.reply_to_message:
+            ID = message.reply_to_message.from_user.id
+        if not message.reply_to_message:
+            ID = message.command[1]
+        UID = int(ID)
+        WHITE_LIST.append(UID)
+        invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:ALLCLOSE"),]])
+        await message.reply(f"✅ WHITE LISTED USER: {UID}\n<pre>Total: {len(WHITE_LIST)}</pre>", reply_markup=invkeyar)
+    except Exception as e: return await message.reply(e)
