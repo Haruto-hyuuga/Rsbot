@@ -30,13 +30,13 @@ Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & G
 
 SCAP = """
 {} __Welcome!__ {} [`{}`] 
-    {} Kindly read Group: /rules 
-        {} Enjoy your stay."""
+    {} **Kindly read Group:** /rules 
+        {} **Enjoy your stay.**"""
 RA_SCAP = "\n\n**❗__{} Your media permissions have been temporarily restricted for security reasons.__** <pre>__you will be unrestricted within few weeks for details click button below__</pre>"
 
 
 MAGREE = """
-{} **Welcome!** {} [{}] 
+{} **Welcome!** {} [`{}`] 
     {} **Thankyou for understanding.**
         {} **Abide by rules and enjoy your stay.**
 <blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>If you have any questions or need admins assistance:  /report </blockquote>"""
@@ -116,7 +116,8 @@ async def welcome_sec1(app: app, message: Message):
                 reply_markup=invkeyar
             )
             os.remove(wlcm_pic)
-    except Exception: return await handle_exception(app)
+    except Exception: 
+        return await handle_exception(app)
 
 
 
