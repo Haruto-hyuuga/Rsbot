@@ -1,5 +1,5 @@
 import os
-from random import choice
+from random import choice, sample
 from PIL import Image, ImageDraw
 ERR_IMG = "https://telegra.ph/file/2de95979a8b2b56ce6937.jpg"
 from HELPER import handle_exception
@@ -48,8 +48,10 @@ async def gen_wlcm(app, member):
 
 
 
-hearts_emojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🩷', '🩵', '🩶', '🖤', '♥️', '💖', '💕', '💞', '💓', '💗', '💝', '💘', '❤️‍🔥', '❤️‍🩹', '💟']
+hearts_emojis_1 = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🩷', '🩵', '🩶', '🖤', '♥️']
+hearts_emojis_2 = ['💖', '💕', '💞', '💓', '💗', '💝', '💘', '❤️‍🔥', '❤️‍🩹', '💟']
 
 def hearts():
-    X, Y, Z = sample(hearts_emojis, 3)
+    Hearts = choice([hearts_emojis_2, hearts_emojis_1])
+    X, Y, Z = sample(Hearts, 3)
     return X, Y, Z
