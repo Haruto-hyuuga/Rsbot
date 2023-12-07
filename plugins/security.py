@@ -70,7 +70,6 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
 @app.on_chat_member_updated(filters.chat(GROUP))
 async def welcome_sec1(app: app, message: Message):
     try:
-        if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         member = message.new_chat_member.user
         if message.old_chat_member:
             if message.from_user.id != message.old_chat_member.user.id: return
@@ -82,6 +81,7 @@ async def welcome_sec1(app: app, message: Message):
                 await app.send_photo(chat_id=message.chat.id,photo=wlcm_pic,caption=f"{SCAP.format(X, member.mention, member.id, Y, Z)}\n\n{Left}")
                 os.remove(wlcm_pic)
             return
+        if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         if member:
             RESTRICTED = await message.chat.restrict_member(
                 user_id=member.id,
