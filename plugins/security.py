@@ -70,15 +70,17 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
 @app.on_chat_member_updated(filters.chat(GROUP))
 async def welcome_sec1(app: app, message: Message):
     try:
-        with open("json.text", "w+", encoding="utf8") as out_file:
-            out_file.write(str(message))
-        await app.send_document(5329765587, document="json.text")
-        os.remove("json.text")
-    except: pass
-    try:
-        if message.old_chat_member: return
         if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         member = message.new_chat_member.user
+        if message.old_chat_member:
+            if message.new_chat_member.user.id != message.old_chat_member.user.id: return
+            if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
+                wlcm_pic = await gen_wlcm(app, member)
+                X, Y, Z = hearts()
+                Left = "<blockquote>If you left group before due to media restrictions, please be aware that the restrictions remain unchanged</blockquote>"
+                await app.send_photo(chat_id=message.chat.id,photo=wlcm_pic,caption=f"{SCAP.format(X, member.mention, member.id, Y, Z)}\n\n{Left}")
+                os.remove(wlcm_pic)
+            return
         if member:
             RESTRICTED = await message.chat.restrict_member(
                 user_id=member.id,
@@ -100,7 +102,7 @@ async def welcome_sec1(app: app, message: Message):
             if RESTRICTED:
                 invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="Understood, I Agree ✅", callback_data=f"SRinfo:TCA${member.id}"),]])
                 wlcm_txt += RA_SCAP.format(Username)
-                await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n @{Username}\n»group: {message.chat.title}\n#id{member.id}")
+                await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n {Username}\n»group: {message.chat.title}\n#id{member.id}")
                 if not await present_user(member.id): await add_user(member.id)
             wlcm_pic = await gen_wlcm(app, member)
             await app.send_photo(
@@ -109,7 +111,7 @@ async def welcome_sec1(app: app, message: Message):
                 caption=wlcm_txt,
                 reply_markup=invkeyar
             )
-            os.remove(f"Base/PFPZ/pic{member.id}.jpg")
+            os.remove(wlcm_pic)
     except Exception: return await handle_exception(app)
 
 
