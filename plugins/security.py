@@ -30,7 +30,7 @@ SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} Kindly read Group: /rules 
         {} Enjoy your stay."""
-RA_SCAP = "**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details click:__ 👉🏻 /details</blockquote>"
+RA_SCAP = "\n\n**❗__Your media permissions have been temporarily restricted for security reasons.__** <blockquote>__you will get unrestricted within few weeks for details:__\n__click👉🏻__  /details</blockquote>"
 
 NNM_EXT = "This action is taken to prevent spammers and the sharing of inappropriate or harmful content."
 
