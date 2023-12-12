@@ -54,13 +54,6 @@ def hearts():
     X, Y, Z = sample(Hearts, 3)
     return X, Y, Z
 
-def get_random_numbers(x):
-    digits = [int(digit) for digit in str(x)]
-    random_digits = sample(digits, 4)
-    result = int(''.join(map(str, random_digits)))
-    return result
-
-
 import aiohttp
 Errpic = "https://telegra.ph/file/96fa9f03a0e860d4c6b4b.jpg"
 async def get_anime_banner(uid):
