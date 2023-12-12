@@ -56,7 +56,7 @@ def hearts():
 
 import aiohttp
 Errpic = "https://telegra.ph/file/96fa9f03a0e860d4c6b4b.jpg"
-async def get_anime_banner(uid):
+async def get_anime_banner():
     try:
         url = "https://nekos.best/api/v2/waifu"
         async with aiohttp.ClientSession() as session:
