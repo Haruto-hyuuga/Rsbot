@@ -58,6 +58,7 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
                 MAGREE.format(X, query.from_user.mention, ouid, Y, Z),
                 reply_markup=Ronvkeyar
             )
+            await query.answer("Type Command: /details or /rs\nTo get detailed info how to media permission", show_alert=True)
         elif Data.startswith("CLOSE$"):
             ouid = Data.split("$")[-1]
             if int(ouid) != UID: return await query.answer("This Is Not For You!", show_alert=True)
