@@ -25,7 +25,7 @@ add_user,
 add_ruser_msg,
 get_user
 )
-SPIC = ["https://graph.org/file/3ad7a84ee06897b580ced.jpg"]
+SPIC = "https://graph.org/file/3ad7a84ee06897b580ced.jpg"
 Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
 
 
@@ -171,8 +171,10 @@ async def resusermsgcount(app: app, message: Message):
         else: return await message.reply("Not Restricted By Me ツ")
         Username = f"@{member.username}" if member.username else f"{member.mention}"
         invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:CLOSE${member.id}"),]])
-        MPIC = await get_anime_banner(member.id)
-        await app.send_photo(chat_id=message.chat.id,photo=MPIC,caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
+        try:
+            MPIC = await get_anime_banner()
+            await app.send_photo(chat_id=message.chat.id,photo=MPIC,caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
+        except: await app.send_photo(chat_id=message.chat.id,photo=SPIC,caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
     except Exception: return await handle_exception(app)
 
 @app.on_message(cmd(["wurs", "vers"]) & filters.user(ADMINS))
