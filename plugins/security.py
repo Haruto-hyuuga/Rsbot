@@ -160,7 +160,7 @@ async def Stickersecmsg(app: app, message: Message):
         MId = message.reply_to_message.id
     Username = f"@{member.username}" if member.username else f"{member.mention}"
     invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="Understood | Close ✅", callback_data=f"SRinfo:CLOSE${member.id}"),]])
-    await app.send_photo(chat_id=message.chat.id,photo=SPIC[0],caption=f"👤 {Username} [`{member.id}`]\n{SCAP_E2}",reply_markup=invkeyar,reply_to_message_id=MId)
+    await app.send_photo(chat_id=message.chat.id,photo=SPIC,caption=f"👤 {Username} [`{member.id}`]\n{SCAP_E2}",reply_markup=invkeyar,reply_to_message_id=MId)
 
 @app.on_message(cmd(["cm", "minfo"]) & filters.group & filters.chat(GROUP))
 async def resusermsgcount(app: app, message: Message):
