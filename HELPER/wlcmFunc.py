@@ -53,3 +53,38 @@ def hearts():
     Hearts = choice([hearts_emojis_1, hearts_emojis_2, hearts_emojis_1, hearts_emojis_2, hearts_emojis_1])
     X, Y, Z = sample(Hearts, 3)
     return X, Y, Z
+
+
+
+
+import aiohttp
+Errpic = "https://telegra.ph/file/96fa9f03a0e860d4c6b4b.jpg"
+async def search_anime(aid: int):
+    query = '''
+        query ($id: Int) {
+          Media(id: $id, type: ANIME) {
+            id
+            title {
+              romaji
+              english
+              native
+            }
+            bannerImage
+          }
+        }
+    '''
+    variables = {"id": aid}
+    url = "https://graphql.anilist.co"
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, json={"query": query, "variables": variables}) as response:
+                if response.status != 200:
+                    return Errpic
+                data = await response.json()
+        image = Errpic
+        if data:
+            image = data['data']['Media']['bannerImage']
+        return image
+    except:
+        return Errpic
