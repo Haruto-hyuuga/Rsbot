@@ -63,43 +63,13 @@ def get_random_numbers(x):
 
 import aiohttp
 Errpic = "https://telegra.ph/file/96fa9f03a0e860d4c6b4b.jpg"
-async def search_anime(aid: int):
-    query = '''
-        query ($id: Int) {
-          Media(id: $id, type: ANIME) {
-            id
-            title {
-              romaji
-              english
-              native
-            }
-            bannerImage
-          }
-        }
-    '''
-    variables = {"id": aid}
-    url = "https://graphql.anilist.co"
+async def get_anime_banner(uid):
     try:
+        url = "https://nekos.best/api/v2/waifu"
         async with aiohttp.ClientSession() as session:
-            async with session.post(url, json={"query": query, "variables": variables}) as response:
+            async with session.get(url) as response:
                 if response.status != 200:
                     return Errpic
                 data = await response.json()
-        image = data.get('data', {}).get('Media', {}).get('bannerImage')
-        return image
-    except:
-        return Errpic
-
-
-
-async def get_anime_banner(uid):
-    try:
-        aid = get_random_numbers(uid)
-        image = await search_anime(aid)
-        if image is None:
-            aid = get_random_numbers(uid)
-            image = await search_anime(aid)
-            if image is None: return Errpic
-            return image
-        return image
+            return data['results'][0]['url']
     except: return Errpic
