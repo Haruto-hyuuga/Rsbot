@@ -145,7 +145,7 @@ To regain your media permissions:
 
 ```python
 This ensures that you understand our guidelines and actively contributing to our community.
-'Once you meet these requirements, feel free to remind Admins, and we‘ll promptly unrestrict your media permissions. Thank you for your understanding and cooperation. If you have any questions or concerns, don’t hesitate to ask. Welcome to the group!'
+'Once you meet these requirements, feel free to remind Admins, and we‘ll promptly unrestrict your media permissions. If you have any questions or concerns, don’t hesitate to ask.'
 ```
 """
 
