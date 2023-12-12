@@ -75,16 +75,14 @@ async def search_anime(aid: int):
     '''
     variables = {"id": aid}
     url = "https://graphql.anilist.co"
-
     try:
         async with aiohttp.ClientSession() as session:
             async with session.post(url, json={"query": query, "variables": variables}) as response:
                 if response.status != 200:
                     return Errpic
                 data = await response.json()
-        image = Errpic
-        if data:
-            image = data['data']['Media']['bannerImage']
+        image = data.get('data', {}).get('Media', {}).get('bannerImage')
+        if image is None: return Errpic
         return image
     except:
         return Errpic
