@@ -71,5 +71,8 @@ async def get_anime_banner(uid):
                 if response.status != 200:
                     return Errpic
                 data = await response.json()
-            return data['results'][0]['url']
+            image = data['results'][0]['url']
+            if image is None: 
+                return Errpic
+            return image
     except: return Errpic
