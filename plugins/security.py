@@ -164,12 +164,10 @@ async def Stickersecmsg(app: app, message: Message):
 async def resusermsgcount(app: app, message: Message):
     try: 
         member = message.from_user
-        if message.reply_to_message:
-            member = message.reply_to_message.from_user
+        if message.reply_to_message: member = message.reply_to_message.from_user
         M = None
-        if await present_user(member.id):
-            M = await get_user(member.id)
-            if not M: return await message.reply("Not Restricted By Me ツ")
+        if await present_user(member.id): M = await get_user(member.id)
+        else: return await message.reply("Not Restricted By Me ツ")
         Username = f"@{member.username}" if member.username else f"{member.mention}"
         invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:CLOSE${member.id}"),]])
         await app.send_photo(chat_id=message.chat.id,photo="https://telegra.ph/file/69e674055f9de65d40b7b.jpg",caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
