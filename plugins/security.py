@@ -166,7 +166,6 @@ async def resusermsgcount(app: app, message: Message):
     try: 
         member = message.from_user
         if message.reply_to_message: member = message.reply_to_message.from_user
-        M = None
         if await present_user(member.id): M = await get_user(member.id)
         else: return await message.reply("Not Restricted By Me ツ")
         Username = f"@{member.username}" if member.username else f"{member.mention}"
