@@ -54,7 +54,11 @@ def hearts():
     X, Y, Z = sample(Hearts, 3)
     return X, Y, Z
 
-
+def get_random_numbers(x):
+    digits = [int(digit) for digit in str(x)]
+    random_digits = sample(digits, 4)
+    result = int(''.join(map(str, random_digits)))
+    return result
 
 
 import aiohttp
