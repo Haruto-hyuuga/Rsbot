@@ -39,7 +39,7 @@ MAGREE = """
 {} **Welcome!** {} [`{}`] 
     {} **Thankyou for understanding.**
         {} **Abide by rules and enjoy your stay.**
-<blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  /links </blockquote><blockquote>Read group regulations and guidelines:  /rules </blockquote><blockquote>For queries or admins assistance:  /report </blockquote>"""
+<blockquote>Media restriction info:  /details </blockquote><blockquote>Channels connect to group:  [/links](https://t.me/Anime_Gaming_Chat_Global) </blockquote><blockquote>Read group regulations and guidelines:  [/rules](https://telegra.ph/Anime-Chat-English--UCO-06-17) </blockquote><blockquote>For queries or admins assistance:  /report </blockquote>"""
 
 WHITE_LIST = []
 
