@@ -86,7 +86,20 @@ async def search_anime(aid: int):
                     return Errpic
                 data = await response.json()
         image = data.get('data', {}).get('Media', {}).get('bannerImage')
-        if image is None: return Errpic
         return image
     except:
         return Errpic
+
+
+
+async def get_anime_banner(uid):
+    try:
+        aid = get_random_numbers(uid)
+        image = await search_anime(aid)
+        if image is None:
+            aid = get_random_numbers(uid)
+            image = await search_anime(aid)
+            if image is None: return Errpic
+            return image
+        return image
+    except: return Errpic
