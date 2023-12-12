@@ -16,7 +16,8 @@ callback_filter,
 handle_exception,
 cmd,
 gen_wlcm,
-hearts
+hearts,
+get_anime_banner
 )
 from HELPER.Database import (
 present_user, 
@@ -170,7 +171,8 @@ async def resusermsgcount(app: app, message: Message):
         else: return await message.reply("Not Restricted By Me ツ")
         Username = f"@{member.username}" if member.username else f"{member.mention}"
         invkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="»ᴄʟᴏꜱᴇ«", callback_data=f"SRinfo:CLOSE${member.id}"),]])
-        await app.send_photo(chat_id=message.chat.id,photo="https://telegra.ph/file/69e674055f9de65d40b7b.jpg",caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
+        MPIC = await get_anime_banner(member.id)
+        await app.send_photo(chat_id=message.chat.id,photo=MPIC,caption=f"👤 {Username} [`{member.id}`]\n💬 Message Count: {M}",reply_markup=invkeyar,)
     except Exception: return await handle_exception(app)
 
 @app.on_message(cmd(["wurs", "vers"]) & filters.user(ADMINS))
