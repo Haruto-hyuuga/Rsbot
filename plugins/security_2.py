@@ -14,12 +14,9 @@ import asyncio
 from HELPER import (
 callback_filter,
 handle_exception,
-cmd,
 gen_wlcm,
 hearts,
-get_anime_banner
 )
-SPIC = "https://graph.org/file/3ad7a84ee06897b580ced.jpg"
 Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
 
 
