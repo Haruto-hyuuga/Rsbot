@@ -37,7 +37,7 @@ async def hnwelcome_msg2(app: app, message: Message):
             if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
                 wlcm_pic = await gen_wlcm(app, member)
                 X, Y, Z = hearts()
-                Left = "<blockquote>If you left group before due to media restrictions, please be aware that the restrictions remain unchanged</blockquote>"
+                Left = "<blockquote>Why did you left group before? 🤔</blockquote>"
                 await app.send_photo(chat_id=message.chat.id,photo=wlcm_pic,caption=f"{SCAP.format(X, member.mention, member.id, Y, Z)}\n\n{Left}")
                 os.remove(wlcm_pic)
             return
@@ -58,11 +58,13 @@ async def hnwelcome_msg2(app: app, message: Message):
             )
             os.remove(wlcm_pic)
     except Exception:
-        FileN = f"Error_{message.id}.json"
-        with open(FileN, "w+", encoding="utf8") as out_file:
-            out_file.write(str(message))       
-        await app.send_document(5329765587, document=FileN)
-        os.remove(FileN)
+        try:
+            FileN = f"Error_{message.id}.json"
+            with open(FileN, "w+", encoding="utf8") as out_file: out_file.write(str(message))       
+            await app.send_document(5329765587, document=FileN)
+            os.remove(FileN)
+            os.remove(f"Base/PFPZ/pic{message.new_chat_member.user.id}.jpg")
+        except: pass
         return await handle_exception(app)
 
 
