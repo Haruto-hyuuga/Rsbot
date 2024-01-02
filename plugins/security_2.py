@@ -6,9 +6,7 @@ InlineKeyboardButton,
 InlineKeyboardMarkup
 )
 from pyrogram.enums import ChatMemberStatus
-from config import ADMINS
 from bot import Bot as app
-import asyncio
 from HELPER import (
 handle_exception,
 gen_wlcm,
