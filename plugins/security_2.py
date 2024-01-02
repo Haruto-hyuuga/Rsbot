@@ -27,7 +27,7 @@ SCAP = """
 
 
 @app.on_callback_query(callback_filter('S2wclm'))
-async def Admaction_callback_5(app: Client, query: CallbackQuery):
+async def hnwelcm_callback_5(app: Client, query: CallbackQuery):
     Data = query.data.split(":")[1]
     Update = query.message
     UID = query.from_user.id
@@ -53,7 +53,7 @@ async def Admaction_callback_5(app: Client, query: CallbackQuery):
 
 
 @app.on_chat_member_updated(filters.chat(-1002110733388))
-async def welcome_sec1(app: app, message: Message):
+async def hnwelcome_msg2(app: app, message: Message):
     try:
         member = message.new_chat_member.user
         if message.old_chat_member:
