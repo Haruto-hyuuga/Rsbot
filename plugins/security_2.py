@@ -16,7 +16,7 @@ Ronvkeyar = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(text="🏛️ RULES", url="https://telegra.ph/ANIME-HINDI-COMMUNITY-RULES-01-02"),
-            InlineKeyboardButton(text="🌐", url="https://t.me/AnimeCommunityChat"),
+            InlineKeyboardButton(text="LINKS 🌐", url="https://t.me/Anime_Gaming_Chat_Global"),
         ]
     ]
 )
