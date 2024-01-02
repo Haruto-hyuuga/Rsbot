@@ -3,7 +3,6 @@ import os
 from pyrogram.types import (
 Message,
 CallbackQuery,
-ChatPermissions,
 InlineKeyboardButton, 
 InlineKeyboardMarkup
 )
