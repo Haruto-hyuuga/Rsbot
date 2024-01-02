@@ -10,7 +10,6 @@ from config import ADMINS
 from bot import Bot as app
 import asyncio
 from HELPER import (
-callback_filter,
 handle_exception,
 gen_wlcm,
 hearts,
