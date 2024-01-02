@@ -18,7 +18,6 @@ hearts,
 )
 Ronvkeyar = InlineKeyboardMarkup([[InlineKeyboardButton(text="COMPLETE RULES & GUIDLINES", url="https://telegra.ph/Anime-Chat-English--UCO-06-17"),]])
 
-
 SCAP = """
 {} __Welcome!__ {} [`{}`] 
     {} **Kindly read Group:** /rules 
@@ -71,7 +70,6 @@ async def hnwelcome_msg2(app: app, message: Message):
             invkeyar = Ronvkeyar
             X, Y, Z = hearts()
             wlcm_txt = SCAP.format(X, member.mention, member.id, Y, Z)
-            await app.send_message(chat_id=-1001649033559,text=f"🔷 #TEMP_MUTE\n» user: {member.mention} [`{member.id}`]\n {Username}\n»group: {message.chat.title}\n#id{member.id}")
             wlcm_pic = await gen_wlcm(app, member)
             if message.from_user.id != member.id:
                 addder = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.mention}"
