@@ -46,11 +46,11 @@ async def gen_wlcm(app, member):
 
 
 
-hearts_emojis_1 = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🩷', '🩵', '🩶', '🖤', '♥️']
+hearts_emojis_1 = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🩷', '🩵', '🩶', '🖤', '♥️', '💖', '💝', '❤️‍🩹']
 hearts_emojis_2 = ['💖', '💕', '💞', '💓', '💗', '💝', '💘', '❤️‍🔥', '❤️‍🩹', '💟']
 
 def hearts():
-    Hearts = choice([hearts_emojis_1, hearts_emojis_2, hearts_emojis_1, hearts_emojis_1])
+    Hearts = hearts_emojis_1 #choice([hearts_emojis_1, hearts_emojis_1, hearts_emojis_2, hearts_emojis_1, hearts_emojis_1])
     X, Y, Z = sample(Hearts, 3)
     return X, Y, Z
 
