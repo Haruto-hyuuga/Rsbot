@@ -32,7 +32,7 @@ async def hnwelcome_msg2(app: app, message: Message):
     try:
         if message.old_chat_member:
             if message.from_user.id != message.old_chat_member.user.id: return
-            if message.new_chat_member.is_member is False: return 
+            #if message.new_chat_member.is_member is False: return 
             if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
                 member = message.old_chat_member.user
                 wlcm_pic = await gen_wlcm(app, member)
