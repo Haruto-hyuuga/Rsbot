@@ -18,7 +18,12 @@ BASE_IMG = [
     'Base/WP11.jpg', 
     'Base/WP12.jpg'
 ]
-STK_IMG = ['Base/STK/S01.png', 'Base/STK/S02.png', 'Base/STK/S03.png', 'Base/STK/S04.png', 'Base/STK/S05.png', 'Base/STK/S06.png', 'Base/STK/S07.png', 'Base/STK/S08.png', 'Base/STK/S09.png', 'Base/STK/S10.png', 'Base/STK/S11.png', 'Base/STK/S12.png', 'Base/STK/S13.png', 'Base/STK/S14.png', 'Base/STK/S15.png', 'Base/STK/S16.png', 'Base/STK/S17.png', 'Base/STK/S18.png', 'Base/STK/S19.png', 'Base/STK/S20.png', 'Base/STK/S21.png', 'Base/STK/S22.png', 'Base/STK/S23.png', 'Base/STK/S24.png', 'Base/STK/S25.png', 'Base/STK/S26.png', 'Base/STK/S27.png', 'Base/STK/S28.png', 'Base/STK/S29.png', 'Base/STK/S30.png', 'Base/STK/S31.png', 'Base/STK/S32.png', 'Base/STK/S33.png', 'Base/STK/S34.png', 'Base/STK/S35.png', 'Base/STK/S36.png', 'Base/STK/S37.png', 'Base/STK/S38.png', 'Base/STK/S39.png', 'Base/STK/S40.png']
+#STK_IMG = ['Base/STK/S01.png', 'Base/STK/S02.png', 'Base/STK/S03.png', 'Base/STK/S04.png', 'Base/STK/S05.png', 'Base/STK/S06.png', 'Base/STK/S07.png', 'Base/STK/S08.png', 'Base/STK/S09.png', 'Base/STK/S10.png', 'Base/STK/S11.png', 'Base/STK/S12.png', 'Base/STK/S13.png', 'Base/STK/S14.png', 'Base/STK/S15.png', 'Base/STK/S16.png', 'Base/STK/S17.png', 'Base/STK/S18.png', 'Base/STK/S19.png', 'Base/STK/S20.png', 'Base/STK/S21.png', 'Base/STK/S22.png', 'Base/STK/S23.png', 'Base/STK/S24.png', 'Base/STK/S25.png', 'Base/STK/S26.png', 'Base/STK/S27.png', 'Base/STK/S28.png', 'Base/STK/S29.png', 'Base/STK/S30.png', 'Base/STK/S31.png', 'Base/STK/S32.png', 'Base/STK/S33.png', 'Base/STK/S34.png', 'Base/STK/S35.png', 'Base/STK/S36.png', 'Base/STK/S37.png', 'Base/STK/S38.png', 'Base/STK/S39.png', 'Base/STK/S40.png']
+STK_IMG = []
+directory_path = 'Base/STK'
+files = [os.path.join(directory_path, f) for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+STK_IMG.extend(files)
+
 
 async def gen_wlcm(app, member):
     try:
