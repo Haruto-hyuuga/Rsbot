@@ -4,7 +4,7 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    with open("WebPage/main.html", "r") as file:
+    with open("index.html", "r") as file:
         html_content = file.read()
     return web.Response(text=html_content, content_type="text/html")
     #return web.json_response("Animerobots")
