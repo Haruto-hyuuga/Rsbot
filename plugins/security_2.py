@@ -41,8 +41,8 @@ async def hnwelcome_msg2(app: app, message: Message):
                 await app.send_photo(chat_id=message.chat.id,photo=wlcm_pic,caption=f"{SCAP.format(X, member.mention, member.id, Y, Z)}\n\n{Left}")
                 os.remove(wlcm_pic)
             return
-        if message.new_chat_member.status == ChatMemberStatus.BANNED: return
         if message.new_chat_member:
+            if message.new_chat_member.status == ChatMemberStatus.BANNED: return
             member = message.new_chat_member.user
             Username = f"@{member.username}" if member.username else f"{member.mention}"
             X, Y, Z = hearts()
