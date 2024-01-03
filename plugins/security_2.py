@@ -30,11 +30,11 @@ SCAP = """
 @app.on_chat_member_updated(filters.chat(-1002110733388))
 async def hnwelcome_msg2(app: app, message: Message):
     try:
-        member = message.new_chat_member.user
         if message.old_chat_member:
             if message.from_user.id != message.old_chat_member.user.id: return
             if message.new_chat_member.is_member is False: return 
             if message.old_chat_member.status in [ChatMemberStatus.RESTRICTED, ChatMemberStatus.LEFT]:
+                member = message.old_chat_member.user
                 wlcm_pic = await gen_wlcm(app, member)
                 X, Y, Z = hearts()
                 Left = "<blockquote>Why did you left group before? 🤔</blockquote>"
@@ -42,7 +42,8 @@ async def hnwelcome_msg2(app: app, message: Message):
                 os.remove(wlcm_pic)
             return
         if message.new_chat_member.status == ChatMemberStatus.BANNED: return
-        if member:
+        if message.new_chat_member:
+            member = message.new_chat_member.user
             Username = f"@{member.username}" if member.username else f"{member.mention}"
             X, Y, Z = hearts()
             wlcm_txt = SCAP.format(X, member.mention, member.id, Y, Z)
@@ -63,7 +64,6 @@ async def hnwelcome_msg2(app: app, message: Message):
             with open(FileN, "w+", encoding="utf8") as out_file: out_file.write(str(message))       
             await app.send_document(5329765587, document=FileN)
             os.remove(FileN)
-            os.remove(f"Base/PFPZ/pic{message.new_chat_member.user.id}.jpg")
         except: pass
         return await handle_exception(app)
 
