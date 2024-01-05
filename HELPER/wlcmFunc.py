@@ -19,7 +19,8 @@ BASE_IMG = [
     'Base/WP12.jpg',
     'Base/WP13.jpg', 
     'Base/WP14.jpg',
-    'Base/WP15.jpg', 
+    'Base/WP15.jpg',
+    'Base/WP16.jpg',
 ]
 STK_IMG = []
 directory_path = 'Base/STK'
