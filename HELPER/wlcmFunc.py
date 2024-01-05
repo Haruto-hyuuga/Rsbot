@@ -16,9 +16,9 @@ BASE_IMG = [
     'Base/WP09.jpg', 
     'Base/WP10.jpg', 
     'Base/WP11.jpg', 
-    'Base/WP12.jpg'
+    'Base/WP12.jpg',
     'Base/WP13.jpg', 
-    'Base/WP14.jpg'
+    'Base/WP14.jpg',
     'Base/WP15.jpg', 
 ]
 STK_IMG = []
