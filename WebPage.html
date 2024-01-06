@@ -19,13 +19,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     z-index: 1000;
   }
 </style>
-<style>
-  .headslide {
-    display: none;
-    position: absolute;
-    transition: opacity 1s ease-in-out;
-  }
-</style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -619,26 +612,21 @@ function showDivs(n) {
 }
 
 // Automatic Slideshow 
-  var myIndex = 0;
-  carousel();
+var myIndex = 0;
+carousel();
 
-  function carousel() {
-    var i;
-    var x = document.getElementsByClassName("headslide");
-    
-    for (i = 0; i < x.length; i++) {
-      x[i].style.opacity = 0;
-    }
-
-    myIndex++;
-
-    if (myIndex > x.length) {
-      myIndex = 1;
-    }
-
-    x[myIndex - 1].style.opacity = 1;
-    setTimeout(carousel, 3000);
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
   }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+
   
 </script>
 
