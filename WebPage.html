@@ -17,7 +17,29 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     right: 30px;
     z-index: 1000;
   }
+  .custom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .custom-header h1 {
+    margin: 0;
+  }
+
+  .join-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+
+  .join-button i {
+    margin-right: 5px;
+  }
 </style>
+  
 </head>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -62,18 +84,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px">
 
-  <!-- Header -->
-  <header id="about">
-    <a href="https://t.me/AnimeCommunityChat"><video src="https://telegra.ph/file/b490cc52f40ec88349243.mp4" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity" autoplay loop muted></video></a>
+<header id="about" class="custom-header">
+  <a href="https://t.me/AnimeCommunityChat">
+    <video src="https://telegra.ph/file/b490cc52f40ec88349243.mp4" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity" autoplay loop muted></video>
+  </a>
+  
+  <div class="w3-container">
     <h1><b>Anime Chat Community [English]</b></h1>
-    <div class="w3-container">
-    <a href="https://t.me/AnimeCommunityChat" class="w3-button w3-round-large w3-right w3-pink w3-padding-large w3-opacity w3-hover-opacity-off">
-    <i class="fa fa-commenting-o" style="font-size:25px;"></i>
-    <b> JOIN CHAT</b>
-    </a>
-    <div class="w3-section w3-bottombar w3-padding-16"></div>
+    
+    <div class="w3-section w3-bottombar w3-padding-16">
+      <a href="https://t.me/AnimeCommunityChat" class="w3-button w3-round-large w3-right w3-pink w3-padding-large w3-opacity w3-hover-opacity-off join-button">
+        <i class="fa fa-commenting-o" style="font-size:25px;"></i>
+        <b>JOIN CHAT</b>
+      </a>
     </div>
-  </header>
+  </div>
+</header>
   
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
