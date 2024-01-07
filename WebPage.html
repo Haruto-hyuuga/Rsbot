@@ -503,10 +503,31 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 <script>
 // Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
+function w3_open(sectionId) {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+
+    // Highlight the clicked section
+    var menuItems = document.getElementsByClassName("w3-bar-item");
+    for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].classList.remove("w3-text-pink"); // Remove text color from all items
+    }
+
+    var clickedItem = document.querySelector('[onclick="w3_open(\'' + sectionId + '\')"]');
+    clickedItem.classList.add("w3-text-pink"); // Add text color to the clicked item
+    
+    // Scroll to the corresponding section
+    var targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.scrollIntoView();
+    }
 }
+
+  
  
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
