@@ -53,17 +53,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <img src="https://i.ibb.co/SJRNH6v/Tamako.gif" style="width:80%; position: relative; top: -100px;" class="w3-left">
   </div><hr>
   <div class="w3-bar-block">
-    <a href="javascript:void(0)" onclick="w3_open('about')" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <a href="#about" onclick="w3_open('aboutLink')" id="aboutLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
     <i class="fa fa-comments-o fa-fw w3-margin-right"></i>ABOUT
     </a>
-    <a href="javascript:void(0)" onclick="w3_open('rules')" class="w3-bar-item w3-button w3-padding w3-text-pink">
-    <i class="fa fa-heartbeat fa-fw w3-margin-right"></i>RULES
+    <a href="#rules" onclick="w3_open('rulesLink')" id="rulesLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>RULES
     </a>
-    <a href="javascript:void(0)" onclick="w3_open('codeofconduct')" class="w3-bar-item w3-button w3-padding w3-text-pink">
-    <i class="fa fa-file-archive-o fa-fw w3-margin-right"></i>CODE OF CONDUCT 
+    <a href="#codeofconduct" onclick="w3_open('codeofconductLink')" id="codeofconductLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>CODE OF CONDUCT
     </a>
-    <a href="javascript:void(0)" onclick="w3_open('assistance')" class="w3-bar-item w3-button w3-padding w3-text-pink">
-    <i class="fa fa-heartbeat fa-fw w3-margin-right"></i>ASSISTANCE 
+    <a href="#assistance" onclick="w3_open('assistanceLink')" id="assistanceLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>ASSISTANCE
+    </a>
+    <a href="#staff" onclick="w3_open('staffLink')" id="staffLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>ADMINLIST
+    </a>
+    <a href="#groups" onclick="w3_open('groupsLink')" id="groupsLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>OTHER GROUPS
+    </a>
+    <a href="#channels" onclick="w3_open('channelsLink')" id="channelsLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>CHANNELS
+    </a>
+    <a href="#bots" onclick="w3_open('botsLink')" id="botsLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>BOTS USED
+    </a>
+    <a href="#developer" onclick="w3_open('developerLink')" id="developerLink" class="w3-bar-item w3-button w3-padding w3-text-pink">
+    <i class="fa fa-comments-o fa-fw w3-margin-right"></i>DEVELOPER
     </a>
   </div>
 </nav>
@@ -517,21 +532,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 <script>
 // Script to open and close sidebar
-function w3_open(sectionId) {
+function w3_open(linkId) {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
+
     var menuItems = document.getElementsByClassName("w3-bar-item");
     for (var i = 0; i < menuItems.length; i++) {
-        menuItems[i].classList.remove("w3-text-pink");
+        menuItems[i].classList.remove("w3-text-pink"); // Remove the color class from all items
     }
-    var clickedItem = document.querySelector('[onclick="w3_open(\'' + sectionId + '\')"]');
-    clickedItem.classList.add("w3-text-pink");
-    var targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-        targetSection.scrollIntoView();
-    }
+    document.getElementById(linkId).classList.add("w3-text-pink"); // Add color class to the clicked item
+    event.preventDefault();
 }
-  
  
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
