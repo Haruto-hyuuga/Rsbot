@@ -382,14 +382,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <br>
 
   <div class="w3-row w3-center w3-card w3-padding">
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Groups-O');" id="myLink">
-        <div class="w3-col s6 tablink">GROUPS</div>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Groups-O');" id="myCGLink">
+        <div class="w3-col s6 CGtablink">GROUPS</div>
       </a>
       <a href="javascript:void(0)" onclick="openMenu(event, 'Channels-O');">
-        <div class="w3-col s6 tablink">CHANNELS</div>
+        <div class="w3-col s6 CGtablink">CHANNELS</div>
       </a>
   </div>
-  <div id="Groups-O" class="w3-container menu w3-padding-48 w3-card">
+  
+  <div id="Groups-O" class="w3-container CGmenu w3-padding-48 w3-card">
       <h5>Bread Basket</h5>
       <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
     
@@ -406,7 +407,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
     </div>
 
-    <div id="Channels-O" class="w3-container menu w3-padding-48 w3-card">
+    <div id="Channels-O" class="w3-container CGmenu w3-padding-48 w3-card">
       <h5>Coffee</h5>
       <p class="w3-text-grey">Regular coffee 2.50</p><br>
     
@@ -422,10 +423,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <h5>Soda</h5>
       <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
     </div>  
-    <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
-  </div>
-</div>
-
+    
   
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-dark-grey">
@@ -528,18 +526,18 @@ function showDivs(n) {
 // Tabbed Menu
 function openMenu(evt, menuName) {
     var i, x, tablinks;
-    x = document.getElementsByClassName("menu");
+    x = document.getElementsByClassName("CGmenu");
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tablink");
+    tablinks = document.getElementsByClassName("CGtablink");
     for (i = 0; i < x.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+        tablinks[i].className = tablinks[i].className.replace(" w3-win8-pink", "");
     }
     document.getElementById(menuName).style.display = "block";
-    evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+    evt.currentTarget.firstElementChild.className += " w3-win8-pink";
 }
-document.getElementById("myLink").click();
+document.getElementById("myCGLink").click();
   
 
 // Meny items highlight
